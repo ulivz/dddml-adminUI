@@ -71,6 +71,21 @@ export default class EntityFormModel {
                     FormElementModel.typeMap[property.type]
                 ));
 
+        }  else if (property.isMap) {
+            if (!this.data[property.name]) {
+                this.data[property.name] = '';
+            }
+
+            this.elements.push(
+                new FormElement(
+                    property.name,
+                    property.label,
+                    this.data,                      // parentData
+                    FormElementType.SingleSelect,   // _type (type = 3)
+                    property.map                    // _extData
+                ));
+
+        // 值对象
         } else if (property.isReferenceType) {
 
             if (!this.data[property.name]) {
@@ -86,22 +101,7 @@ export default class EntityFormModel {
                     property.refrenceType
                 ));
 
-        // 可以枚举的属性
-        } else if (property.isMap) {
-            if (!this.data[property.name]) {
-                this.data[property.name] = '';
-            }
-
-            this.elements.push(
-                new FormElement(
-                    property.name,
-                    property.label,
-                    this.data,                      // parentData
-                    FormElementType.SingleSelect,   // _type (type = 3)
-                    property.map                    // _extData
-                ));
-
-        // 值对象
+            // 可以枚举的属性
         } else if (property.isSet) {
             if (!this.data[property.name]) {
                 this.data[property.name] = '';

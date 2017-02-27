@@ -1,3 +1,5 @@
+.idea
+.git
 TemporaryFiles
 _TEST
 config/componentTypeConfig.ts
