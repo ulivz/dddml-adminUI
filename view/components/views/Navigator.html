@@ -1,0 +1,5 @@
+<ol class="breadcrumb">
+    <li><a v-link="{name: 'index'}"><i class="fa fa-dashboard"></i> 首页</a></li>
+    <li v-for="item in navigator"><a v-link="item.route">{{item.label}}</a>
+    </li>
+</ol>

@@ -1,0 +1,115 @@
+{
+  "_tables": [
+    {
+      "name": "Buildings",
+      "rows": [
+        {
+          "_fields": [
+            {
+              "_data": "8 Hao"
+            },
+            {
+              "_data": "8 Hao Lou"
+            },
+            {
+              "_data": null
+            },
+            {
+              "_data": true
+            },
+            {
+              "_data": [
+                {
+                  "styleClasses": "btn btn-sm bg-light-blue",
+                  "link": {
+                    "label": "查看",
+                    "route": {
+                      "name": "entity",
+                      "params": {
+                        "hierarchies": "%5B%7B%22name%22%3A%22Gardens%22%2CNaNd%22%3A%22TestGarden93555255-3f04-41a2-bab1-c8fa9f72d54c%22%7D%2C%7B%22name%22%3A%22Buildings%22%2C2d%22%3A%228%20Hao%22%7D%5D"
+                      }
+                    }
+                  }
+                },
+                {
+                  "styleClasses": "btn btn-sm btn-warning",
+                  "link": {
+                    "label": "编辑",
+                    "route": {
+                      "name": "editSubEntity",
+                      "params": {
+                        "hierarchies": "%5B%7B%22name%22%3A%22Gardens%22%2C%id%22%3A%22TestGarden93555255-3f04-41a2-bab1-c8fa9f72d54c%22%7D%2C%7B%22name%22%3A%22Buildings%22%2C%id%22%3A%228%20Hao%22%7D%5D"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_fields": [
+            {
+              "_data": "9 Hao"
+            },
+            {
+              "_data": "Guangmingding"
+            },
+            {
+              "_data": null
+            },
+            {
+              "_data": true
+            },
+            {
+              "_data": [
+                {
+                  "styleClasses": "btn btn-sm bg-light-blue",
+                  "link": {
+                    "label": "查看",
+                    "route": {
+                      "name": "entity",
+                      "params": {
+                        "hierarchies": "%5B%7B%22name%22%3A%22Gardens%22%2C%id%22%3A%22TestGarden93555255-3f04-41a2-bab1-c8fa9f72d54c%22%7D%2C%7B%22name%22%3A%22Buildings%22%2C%id%22%3A%229%20Hao%22%7D%5D"
+                      }
+                    }
+                  }
+                },
+                {
+                  "styleClasses": "btn btn-sm btn-warning",
+                  "link": {
+                    "label": "编辑",
+                    "route": {
+                      "name": "editSubEntity",
+                      "params": {
+                        "hierarchies": "%5B%7B%22name%22%3A%22Gardens%22%2C%id%22%3A%22TestGarden93555255-3f04-41a2-bab1-c8fa9f72d54c%22%7D%2C%7B%22name%22%3A%22Buildings%22%2C%id%22%3A%229%20Hao%22%7D%5D"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "columns": [
+        {
+          "name": "buildingNumber"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "active"
+        },
+        {
+          "name": "操作",
+          "width": "100px"
+        }
+      ]
+    }
+  ]
+}

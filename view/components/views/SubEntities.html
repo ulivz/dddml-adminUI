@@ -1,0 +1,13 @@
+<div class="box">
+    <div class="box-header with-border nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li role="presentation" data-toggle="tab" v-for="name in tables.names">
+                <a href="javascript:;" v-on:click="change(name)">{{name}}</a>
+            </li>
+            <li v-if="selected" class="pull-right"><a v-link="createRoute" class="btn btn-sm bg-orange">创建</a></li>
+        </ul>
+    </div>
+    <div class="box-body no-padding table-responsive">
+        <v-table :table-data="current"></v-table>
+    </div>
+</div>

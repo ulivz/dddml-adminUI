@@ -1,0 +1,97 @@
+{
+  "skuSet": {
+    ";a:d;b:g;c:j;": {
+      "id": "59c3f120920a083dabe0a84532c2c4a1",
+      "price": 123,
+      "stock": 2
+    },
+    ";a:d;b:h;c:j;": {
+      "id": "f724e2688c56ac52b51078a10d6b9fa9",
+      "price": 125,
+      "stock": 4
+    },
+    ";a:d;b:h;c:k;": {
+      "id": "55c02cf68236b9a9fb719236b65e3d42",
+      "price": 126,
+      "stock": 5
+    },
+    ";a:d;b:i;c:j;": {
+      "id": "f15c37b188459e2aae24fce8b6ebd678",
+      "price": 127,
+      "stock": 6
+    },
+    ";a:d;b:i;c:k;": {
+      "id": "a71928bda68a76cb88e878ee6db4cf2f",
+      "price": 128,
+      "stock": 7
+    },
+    ";a:e;b:g;c:k;": {
+      "id": "b0b8da91bf89fba9d1a832eb7b8004d6",
+      "price": 130,
+      "stock": 9
+    },
+    ";a:e;b:h;c:j;": {
+      "id": "28507421b1fc4d755c165ba7c1a3cb3f",
+      "price": 131,
+      "stock": 10
+    },
+    ";a:e;b:i;c:j;": {
+      "id": "61d51a89bbb96ef61e64f5833aa0891f",
+      "price": 133,
+      "stock": 12
+    },
+    ";a:e;b:i;c:k;": {
+      "id": "88e67f3d686a72866bc5db349f871f4f",
+      "price": 134,
+      "stock": 13
+    },
+    ";a:f;b:g;c:j;": {
+      "id": "a97a6e922284929583ce944b8c773fc9",
+      "price": 135,
+      "stock": 14
+    },
+    ";a:f;b:h;c:j;": {
+      "id": "821dfdd209a503cdc7afe2392fea19ce",
+      "price": 137,
+      "stock": 16
+    },
+    ";a:f;b:h;c:k;": {
+      "id": "fa0f8eedbaf3d013c7276757818f7b2c",
+      "price": 138,
+      "stock": 17
+    },
+    ";a:f;b:i;c:j;": {
+      "id": "41ec17c1f4da7f8eb8e6690dd87da07f",
+      "price": 139,
+      "stock": 18
+    }
+  },
+  "attributes": [
+    {
+      "id": "a",
+      "name": "\u989c\u8272",
+      "values": {
+        "d": "\u7ea2\u8272",
+        "e": "\u7eff\u8272",
+        "f": "\u9ec4\u8272"
+      }
+    },
+    {
+      "id": "b",
+      "name": "\u5c3a\u7801",
+      "values": {
+        "g": "39",
+        "h": "40",
+        "i": "41"
+      }
+    },
+    {
+      "id": "c",
+      "name": "\u6750\u8d28",
+      "values": {
+        "j": "\u5e03\u6599",
+        "k": "\u725b\u76ae"
+      }
+    }
+  ]
+}

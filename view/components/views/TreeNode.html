@@ -1,0 +1,9 @@
+<li class="list-group-item" v-on:click="onSelected(node)" :class="{'active': node.selected}">
+    <span class="indent" v-for="n in node.level"></span>
+    <span class="icon expand-icon glyphicon {{node.icon}}" v-on:click.stop="updateChildren(node)"></span>
+    <span class="icon node-icon"></span>
+    {{node.title}}
+</li>
+<template v-if="!node.folded" v-for="child in node.children">
+    <tree-node :node="child"></tree-node>
+</template>

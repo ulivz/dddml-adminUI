@@ -1,0 +1,133 @@
+.has-error .select2-selection{
+    border-color: #dd4b39;
+}
+.table{
+    cursor: pointer;
+}
+html, body {
+    font-family: "Microsoft YaHei UI";
+    font-weight: 500;
+}
+
+.admin-card{
+    margin-bottom: 20px;
+}
+
+.admin-sep{
+    height: 30px
+}
+
+.admin-title{
+    margin-bottom: 3px;
+}
+
+.admin-sep-20{
+    margin-bottom: 20px;
+}
+
+.head-example {
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    background: #d5d5d5;
+    display: inline-block;
+}
+
+
+.ant-modal{
+    width: 1000px;
+}
+
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%;
+}
+
+.isui-table-wrapper{
+    max-height: 300px;
+    min-height: 300px;
+    max-width: 1000px;
+    overflow: scroll;
+}
+
+
+.isui-table {
+    /*border: solid #d5d5d5 1px;*/
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #d5d5d5;
+    -moz-box-shadow: 0 1px 1px #d5d5d5;
+    box-shadow: 0 1px 1px #d5d5d5;
+}
+
+/*isui-table tr:hover*/
+.isui-table-choose {
+    background: #f5f5f5;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.isui-table td, .isui-table th {
+    border-left: 1px solid #d5d5d5;
+    border-top: 1px solid #d5d5d5;
+    padding: 10px;
+    text-align: left;
+}
+
+.isui-table th {
+    background-color: #f5f5f5;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.isui-table td:first-child, .isui-table th:first-child {
+    border-left: none;
+}
+
+.isui-table th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.isui-table th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.isui-table th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.isui-table tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.isui-table tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+
+.isui-pagination-wrapper{
+    padding: 20px;
+    text-align: center;
+}
+
+.isui-pagination{
+    display: inline-block;
+}

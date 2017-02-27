@@ -1,0 +1,35 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+        <navigator :navigator="navigator"></navigator>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <alert :show.sync="showError" title="出现错误" :content="errorMessage" type="alert-danger"></alert>
+        <!-- Default box -->
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{title}}</h3>
+                <div class="box-tools">
+                    <a v-if="createBtn" v-link="createBtn.link.route" class="{{createBtn.styleClasses}}">
+                        {{createBtn.link.label}}
+                    </a>
+                </div>
+            </div>
+            <div v-if="table" class="box-body no-padding table-responsive">
+                <v-table :table-data="table"></v-table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                脚部
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+</div>

@@ -1,0 +1,8 @@
+<ul id="main-menu" class="sidebar-menu">
+    <li class="header">聚合</li>
+    <li v-for="link in links">
+        <a v-link="link.route">
+            <i class="fa fa-th"></i> <span>{{link.label}}</span>
+        </a>
+    </li>
+</ul>

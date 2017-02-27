@@ -1,0 +1,495 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+        <navigator :navigator="navigator"></navigator>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="admin-card">
+            <v-card title="按钮"><a href="/#!/components/card" slot="extra">More</a>
+
+                <v-button type="primary">Primary</v-button>
+                <v-button type="success">success</v-button>
+                <v-button type="error">error</v-button>
+                <v-button type="warning">warning</v-button>
+                <v-button>default</v-button>
+                <v-button type="ghost">Ghost</v-button>
+                <v-button type="dashed">Dashed</v-button>
+
+                <v-button type="primary" size="large">Large</v-button>
+                <v-button type="primary">Default</v-button>
+                <v-button type="primary" size="small">Small</v-button>
+
+                <v-button type="primary" loading="">Loading</v-button>
+
+            </v-card>
+        </div>
+
+
+        <div class="admin-card">
+            <v-card title="级联">
+                <v-cascader :options="options" @change="onchange"></v-cascader>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="多选框">
+                <v-checkbox>苹果</v-checkbox>
+                <v-checkbox>香蕉</v-checkbox>
+                <v-checkbox-group :options="checkboxOptions" :value.sync="checkboxDefaultValue"></v-checkbox-group>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="单选框">
+                <v-radio><span>苹果</span></v-radio>
+                <v-radio><span>香蕉</span></v-radio>
+                <v-radio-group default-value="a"
+                               :radios="[{value: 'a', name: 'A'},{value: 'b', name: 'B'},{value: 'c', name: 'C'},{value: 'd', name: 'D'}]"></v-radio-group>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="表单">
+                <v-form>
+                    <v-form-item label="账户">
+                        <v-input value="请输入账户名"></v-input>
+                    </v-form-item>
+                    <v-form-item label="密码">
+                        <v-input value="请输入密码"></v-input>
+                    </v-form-item>
+                    <v-form-item>
+                        <v-checkbox>记住我</v-checkbox>
+                    </v-form-item>
+                    <v-button type="primary" html-type="submit">登录</v-button>
+                </v-form>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="输入框">
+                <div class="admin-title">邮箱地址:</div>
+                <v-input placeholder="邮箱">
+                    <span slot="after">.com</span>
+                </v-input>
+                <div class="admin-sep"></div>
+                <div class="admin-title">个人网站:</div>
+                <v-input placeholder="官网">
+                    <span slot="before">http://</span>
+                </v-input>
+                <div class="admin-sep"></div>
+                <div class="admin-title">数字输入框:</div>
+                <v-input-number min="1" max="10" default-value="3" :on-change="_handleChange"></v-input-number>
+            </v-card>
+        </div>
+
+
+        <div class="admin-card">
+            <v-card title="评分">
+                <div class="">
+                    <v-rate></v-rate>
+                    <span>默认</span>
+                </div>
+                <div class="admin-sep">
+                    <v-rate :default-value.sync="rateValue"></v-rate>
+                    <span class="ant-rate-text">{{rateValue}}星</span>
+                </div>
+                <div class="admin-sep">
+                    <v-rate :allow-half="true" :default-value="2.5"></v-rate>
+                    <span>支持半星</span>
+                </div>
+                <div class="admin-sep">
+                    <v-rate :disabled="true" :default-value="2"></v-rate>
+                    <span>禁用</span>
+                </div>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="选择器">
+                <div class="admin-sep-20">
+                    <v-select placeholder="请选择人员" style="width: 120px;" :options="selectOptions"
+                              value="" @change="change"></v-select>
+                    <v-select placement="top" style="width: 120px;" :options="selectOptions"
+                              :value.sync="selectOptionsDefaultValue"></v-select>
+                    <v-select :disabled="true" style="width: 120px;" value=""></v-select>
+                </div>
+                <div>
+                    <v-select style="width: 100%;" :multiple="true" :options="selectOptions" :value="['3']"></v-select>
+                </div>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="滑动输入条">
+                <div>
+                    <v-slider :default-value="30"></v-slider>
+                    <v-slider :range="true" :default-value="[20, 50]"></v-slider>
+                    <v-slider :range="true" :default-value="[20, 50]" :disabled="true"></v-slider>
+                </div>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="开关">
+                <v-switch :on-change="change"></v-switch>
+                <v-switch :disabled="true"></v-switch>
+                <v-switch>
+                    <span slot="checkedChildren">开</span>
+                    <span slot="unCheckedChildren">关</span>
+                </v-switch>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="时间选择器">
+                <div>
+                    <v-time-picker :value.sync="timeValue"></v-time-picker>
+                    <v-time-picker :disabled="true"></v-time-picker>
+                </div>
+            </v-card>
+        </div>
+
+        <!--<div class="admin-card">-->
+        <!--<v-card title="穿梭框">-->
+        <!--<v-transfer :data-source="dataSource1" :target-keys="targetKeys1" :on-change="handleChange1"-->
+        <!--:render="render"></v-transfer>-->
+        <!--</v-card>-->
+        <!--</div>-->
+
+
+        <div class="admin-card">
+            <v-card title="树">
+                <v-tree-select :data="treedata1" :allow-clear="true"></v-tree-select>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="文件上传">
+                <v-upload :name="name" :action="action" :on-change="onChange">
+                    <v-button type="ghost">
+                        <v-icon type="upload"></v-icon>
+                        点击上传
+                    </v-button>
+                </v-upload>
+                <v-upload :name="name" :action="action" type="drag" :on-change="onChange">
+                    <p class="ant-upload-drag-icon">
+                        <v-icon type="inbox"></v-icon>
+                    </p>
+                    <p class="ant-upload-text">点击或将文件拖拽到此区域上传</p>
+                    <p class="ant-upload-hint">支持单个或批量上传，严禁上传公司内部资料及其他违禁文件</p>
+                </v-upload>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="日期选择器">
+                <v-datepicker :clearable="true" @change="dateChange"></v-datepicker>
+                <br>
+                <br>
+                <v-datepicker :range="true" :clearable="true"></v-datepicker>
+            </v-card>
+        </div>
+
+        <div class="提示">
+            <v-card title="输入框">
+                <v-alert type="success" message="成功提示的文案" :show-icon="true"></v-alert>
+                <v-alert type="info" message="消息提示的文案" :show-icon="true"></v-alert>
+                <v-alert type="warning" message="警告提示的文案" :show-icon="true"></v-alert>
+                <v-alert type="error" message="错误提示的文案" :show-icon="true"></v-alert>
+                <v-alert type="success" message="成功提示的文案" :show-icon="true"
+                         description="成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍"></v-alert>
+                <v-alert type="info" message="消息提示的文案" s:how-icon="true"
+                         description="消息提示的辅助性文字介绍消息提示的辅助性文字介绍消息提示的辅助性文字介绍"></v-alert>
+                <v-alert type="warning" message="警告提示的文案" :show-icon="true"
+                         description="警告提示的辅助性文字介绍警告提示的辅助性文字介绍"></v-alert>
+                <v-alert type="error" message="错误提示的文案" :show-icon="true"
+                         description="错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍"></v-alert>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="进度条">
+                <v-progress-line :percent="30"></v-progress-line>
+                <v-progress-line :percent="50" status="active"></v-progress-line>
+                <v-progress-line :percent="70" status="exception"></v-progress-line>
+                <v-progress-line :percent="100"></v-progress-line>
+                <v-progress-line :percent="50" :show-info="false"></v-progress-line>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title=进度框">
+                <v-progress-circle :percent="30"></v-progress-circle>
+                <v-progress-circle :percent="70" status="exception"></v-progress-circle>
+                <v-progress-circle :percent="100"></v-progress-circle>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="徽标数">
+                <v-badge :count="11" :overflow-count="10"><a class="head-example"></a>
+                </v-badge>
+                <v-badge :count="1000" :overflow-count="999"><a class="head-example"></a>
+                </v-badge>
+                <v-badge :count="25"></v-badge>
+                <v-badge :count="4"
+                         :styles="{ backgroundColor: '#fff', color: '#999', borderColor: '#d9d9d9' }"></v-badge>
+                <v-badge :count="109" :styles="{ backgroundColor: '#87d068' }"></v-badge>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="走马灯">
+                <v-carousel>
+                    <div>
+                        <h3>1</h3>
+                    </div>
+                    <div>
+                        <h3>2</h3>
+                    </div>
+                    <div>
+                        <h3>3</h3>
+                    </div>
+                    <div>
+                        <h3>4</h3>
+                    </div>
+                </v-carousel>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="折叠面板">
+                <v-collapse default-active-key="1">
+                    <v-collapse-item header="This is panel header 1" key="1">A dog is a type of domesticated animal.
+                        Known for its loyalty and faithfulness,
+                        it can be found as a welcome guest in many households across the world.
+                    </v-collapse-item>
+                    <v-collapse-item
+                            header="This is panel header 2" key="2">A dog is a type of domesticated animal. Known for
+                        its loyalty and faithfulness,
+                        it can be found as a welcome guest in many households across the world.
+                    </v-collapse-item>
+                    <v-collapse-item
+                            header="This is panel header 3" key="3">A dog is a type of domesticated animal. Known for
+                        its loyalty and faithfulness,
+                        it can be found as a welcome guest in many households across the world.
+                    </v-collapse-item>
+                </v-collapse>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="通知">
+                <button type="button" class="ant-btn ant-btn-primary" @click="openNotification"><span>打开通知提醒框</span>
+                </button>
+                <button type="button" class="ant-btn" @click="openNotificationWithIcon('success')"><span>成 功</span>
+                </button>
+                <button type="button" class="ant-btn" @click="openNotificationWithIcon('info')"><span>消 息</span>
+                </button>
+                <button type="button" class="ant-btn" @click="openNotificationWithIcon('warning')"><span>警 告</span>
+                </button>
+                <button type="button" class="ant-btn" @click="openNotificationWithIcon('error')"><span>错 误</span>
+                </button>
+                <button type="button" class="ant-btn ant-btn-primary" @click="openMessage"><span>显示普通提醒</span>
+                </button>
+                <button type="button" class="ant-btn" @click="success()"><span>显示成功信息</span>
+                </button>
+                <button type="button" class="ant-btn" @click="error()"><span>显示失败信息</span>
+                </button>
+                <button type="button" class="ant-btn" @click="warning()"><span>显示警告信息</span>
+                </button>
+                <button type="button" class="ant-btn" @click="loading"><span>显示加载中...</span>
+                </button>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="输入框">
+                <v-popover placement="top" title="简单标题">
+                    <div slot="content">我是普通文本内容</div>
+                    <button class="ant-btn ant-btn-primary" slot="trigger">点击弹出卡片</button>
+                </v-popover>
+
+                <v-popover placement="left" title="简单标题" content="点击">
+                    <button class="ant-btn ant-btn-primary" slot="trigger">click</button>
+                </v-popover>
+                <span style="display:inline-block;width:80px;">
+                <v-popover placement="top" title="简单标题" trigger="focus" content="focus">
+                    <input class="ant-input ant-input-lg" slot="trigger" placeholder="focus">
+                </v-popover>
+            </span>
+                <v-popover placement="right" title="简单标题" content="hover"
+                           trigger="hover">
+                    <button class="ant-btn ant-btn-primary" slot="trigger">hover</button>
+                </v-popover>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="气泡确认框">
+                <v-popconfirm title="确定删除吗?" :on-confirm="confirm" :on-cancel="cancel"> <a href="javascript:;">删除</a>
+                </v-popconfirm>
+            </v-card>
+        </div>
+
+
+        <div class="admin-card">
+            <v-card title="模态窗口">
+                <v-button type="primary" @click="_showModal">显示对话框</v-button>
+                <v-modal title="第一个 Modal" :visible="visible" :on-ok="_handleOk"
+                         :on-cancel="_handleCancel">
+                    <p>对话框的内容</p>
+                    <p>对话框的内容</p>
+                    <p>对话框的内容</p>
+                </v-modal>
+            </v-card>
+        </div>
+
+
+        <div class="admin-card">
+            <v-card title="标签">
+                <v-tag>标签一</v-tag>
+                <v-tag>标签一</v-tag>
+                <v-tag color="blue" :closable="true" @close="close(1)">蓝色</v-tag>
+                <v-tag color="green" :closable="true" @close="close(2)">绿色</v-tag>
+                <v-tag color="yellow" :closable="true" @close="close(3)">黄色</v-tag>
+                <v-tag color="red" :closable="true" @close="close(4)">红色</v-tag>
+            </v-card>
+        </div>
+
+
+        <div class="admin-card">
+            <v-card title="时间轴">
+                <v-timeline>
+                    <v-timeline-item>创建服务现场 2015-09-01</v-timeline-item>
+                    <v-timeline-item>创建服务现场 2015-09-01</v-timeline-item>
+                    <v-timeline-item>创建服务现场 2015-09-01</v-timeline-item>
+                    <v-timeline-item>创建服务现场 2015-09-01</v-timeline-item>
+                </v-timeline>
+                <br>
+                <v-timeline>
+                    <v-timeline-item color="green">创建服务现场 2015-09-01</v-timeline-item>
+                    <v-timeline-item color="green">创建服务现场 2015-09-01</v-timeline-item>
+                    <v-timeline-item color="red">
+                        <p>初步排除网络异常1</p>
+                        <p>初步排除网络异常2</p>
+                        <p>初步排除网络异常3 2015-09-01</p>
+                    </v-timeline-item>
+                    <v-timeline-item>
+                        <p>技术测试异常1</p>
+                        <p>技术测试异常2</p>
+                        <p>技术测试异常3 2015-09-01</p>
+                    </v-timeline-item>
+                </v-timeline>
+            </v-card>
+        </div>
+
+
+        <div class="admin-card">
+            <v-card title="面包屑">
+                <v-breadcrumbs>
+                    <v-breadcrumb name="Home" separator=">"></v-breadcrumb>
+                    <v-breadcrumb name="Application Center" href="" separator=">"></v-breadcrumb>
+                    <v-breadcrumb name="Application List" href="" separator=">"></v-breadcrumb>
+                    <v-breadcrumb name="An Application" separator="/"></v-breadcrumb>
+                </v-breadcrumbs>
+            </v-card>
+        </div>
+
+
+
+        <div class="admin-card">
+            <v-card title="导航">
+                <v-menu mode="horizontal">
+                    <v-menu-item>
+                        <v-icon type="mail"></v-icon>导航一</v-menu-item>
+                    <v-menu-item :disabled="true">
+                        <v-icon type="appstore"></v-icon>导航二</v-menu-item>
+                    <v-sub-menu title="导航 - 子菜单" icon="setting">
+                        <v-menu-item-group title="分组1">
+                            <v-menu-item>选项1</v-menu-item>
+                            <v-menu-item>选项2</v-menu-item>
+                        </v-menu-item-group>
+                        <v-menu-item-group title="分组2">
+                            <v-menu-item>选项3</v-menu-item>
+                            <v-menu-item>选项4</v-menu-item>
+                        </v-menu-item-group>
+                    </v-sub-menu>
+                    <v-menu-item><a href="http://www.alipay.com/" target="_blank">导航四 - 链接</a>
+                    </v-menu-item>
+                </v-menu>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="步骤条">
+                <v-steps :current="1">
+                    <v-step title="已完成" description="这里是多信息的描述"></v-step>
+                    <v-step title="进行中" description="这里是多信息的描述"></v-step>
+                    <v-step title="待运行" description="这里是多信息的描述"></v-step>
+                    <v-step title="待运行" description="这里是多信息的描述"></v-step>
+                </v-steps>
+            </v-card>
+        </div>
+
+        <div class="admin-card">
+            <v-card title="tabs">
+                <v-tabs active-key="1">
+                    <v-tab-pane key="1" tab="选项卡一">选项卡一内容</v-tab-pane>
+                    <v-tab-pane key="2" tab="选项卡二">选项卡二内容</v-tab-pane>
+                    <v-tab-pane key="3" tab="选项卡三">选项卡三内容</v-tab-pane>
+                </v-tabs>
+            </v-card>
+        </div>
+
+        <v-back-top></v-back-top>
+
+
+
+
+
+        <div class="admin-card">
+            <v-card title="图标库">
+                <v-icon type="step-backward"></v-icon>
+                <v-icon type="step-forward"></v-icon>
+                <v-icon type="fast-backward"></v-icon>
+                <v-icon type="fast-forward"></v-icon>
+                <v-icon type="shrink"></v-icon>
+                <v-icon type="arrow-salt"></v-icon>
+                <v-icon type="down"></v-icon>
+                <v-icon type="up"></v-icon>
+                <v-icon type="left"></v-icon>
+                <v-icon type="right"></v-icon>
+                <v-icon type="caret-down"></v-icon>
+                <v-icon type="caret-up"></v-icon>
+                <v-icon type="caret-left"></v-icon>
+                <v-icon type="caret-right"></v-icon>
+            </v-card>
+        </div>
+
+        <!--<div class="box">-->
+        <!--<div class="box-header with-border">-->
+        <!--<h3 class="box-title">{{title}}</h3>-->
+        <!--<div class="box-tools">-->
+        <!--<a v-if="createBtn" v-link="createBtn.link.route" class="{{createBtn.styleClasses}}">-->
+        <!--{{ createBtn.link.label }}-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div v-if="table" class="box-body no-padding table-responsive">-->
+        <!--<v-table :table-data="table"></v-table>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.box-body &ndash;&gt;-->
+        <!--<div class="box-footer">-->
+        <!--脚部-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.box-footer&ndash;&gt;-->
+        <!--</div>-->
+    </section>
+</div>

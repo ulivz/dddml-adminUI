@@ -1,0 +1,15 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+        <navigator :navigator="navigator"></navigator>
+    </section>
+
+    <section class="content">
+        <alert :show.sync="message.show" :title="message.title" :content="message.content" :type="message.type"></alert>
+        <vv-form v-if="form" :form="form"></vv-form>
+        {{postEntity|json}}
+    </section>
+</div>

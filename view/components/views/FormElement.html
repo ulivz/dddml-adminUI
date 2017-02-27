@@ -1,0 +1,63 @@
+<div class="form-group">
+    <label class="col-sm-2 control-label">{{element.label}}</label>
+
+    <!-- Input -->
+    <div class="col-sm-10" v-if="element.type === 1">
+        <input type="text" class="form-control" v-model="element.value" name="{{element.elementName}}"
+               id="{{element.elementName}}">
+    </div>
+
+    <!-- Number -->
+    <div class="col-sm-10" v-if="element.type === 2">
+        <input type="number" class="form-control" v-model="element.value" name="{{element.elementName}}"
+               id="{{element.elementName}}">
+    </div>
+
+    <!-- SingleSelect -->
+    <div class="col-sm-10" v-if="element.type === 3">
+        <select class="form-control" v-model="element.value">
+            <option v-for="(k, v) in element.extData" v-bind:value="k">
+                {{ v }}
+            </option>
+        </select>
+    </div>
+
+    <!-- DateTime -->
+    <div class="col-sm-10" v-if="element.type === 6">
+
+        <v-datepicker :clearable="true" @change="dateChange" name="{{element.elementName}}"
+                      id="{{element.elementName}}"></v-datepicker>
+        <v-time-picker :value.sync="timeValue"></v-time-picker>
+        <!--
+        董老师的写法：
+            <input type="text" class="form-control" v-model="element.value" name="{{element.elementName}}"-->
+               <!--id="{{element.elementName}}">
+        -->
+    </div>
+
+    <!-- bool -->
+    <div class="col-sm-10" v-if="element.type === 4">
+        <!-- 董老师的写法：-->
+        <input type="checkbox" id="{{element.elementName}}" name="{{element.elementName}}"
+               v-if="element.value" checked v-model="element.value">
+        <input type="checkbox" id="{{element.elementName}}" name="{{element.elementName}}"
+               v-else v-model="element.value">
+    </div>
+
+    <div class="col-sm-10" v-if="element.type === 7">
+        <div style="padding-top: 7px">
+            <v-switch :on-change="switchChange"></v-switch>
+        </div>
+    </div>
+
+    <div class="col-sm-10" v-if="element.type === 8">
+        <div style="padding-top: 7px">
+            <v-checkbox-group :options="multiSelectOption" :value.sync="multiSelectValue"></v-checkbox-group>
+        </div>
+    </div>
+
+    <div class="col-sm-10" v-if="element.type === 9">
+        <search-widget :element.sync="element" :widget-type="widgetType"></search-widget>
+    </div>
+
+</div>

@@ -1,0 +1,19 @@
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th v-for="column in tableData.columns">
+            <span :style="{display:'inline-block',width:column.width}">{{column.name}}</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="row in tableData.rows">
+        <td v-for="field in row.fields">
+            <span v-if="field.type=='buttonGroup'">
+                <button-group :button-group="field"></button-group>
+            </span>
+            <span v-else>{{field.data}}</span>
+        </td>
+    </tr>
+    </tbody>
+</table>

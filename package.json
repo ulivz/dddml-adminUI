@@ -1,0 +1,44 @@
+{
+  "name": "dddml-app",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --port 8086 --config build/webpack.config.dev.js --inline --hot",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.prod.js  --progress--hide-modules",
+    "node-server": "node node-server/server.js",
+    "node-server-dev": "devtool node-server/server.js --watch",
+    "build-test": "tsc _TEST/test.ts",
+    "test": "webpack --config _TEST/webpack.config.test.js --watch",
+    "debug": "devtool _TEST/test.js ",
+    "debug-w": "devtool _TEST/test.js --watch",
+    "build-w": "webpack --watch",
+    "build-p": "webpack -p"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "cross-env": "^3.1.4",
+    "express": "^4.14.1",
+    "express-http-proxy": "^0.11.0",
+    "http-proxy-middleware": "^0.17.3",
+    "jasmine-core": "2.5.1",
+    "request": "^2.79.0",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.0",
+    "uuid-lib": "^0.0.6",
+    "vue-resource": "^0.9.3",
+    "vue-router": "^0.7.13",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.16.3",
+    "webpack-merge": "^3.0.0"
+  },
+  "dependencies": {
+    "html-loader": "^0.4.3",
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.1",
+    "lodash": "^4.15.0",
+    "vue": "^1.0.26",
+    "vue-beauty": "^0.0.10"
+  }
+}

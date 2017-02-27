@@ -1,0 +1,71 @@
+<input @click="showWidget"
+       placeholder="Click to Search Widget"
+       type="text"
+       class="form-control"
+       v-model="element.value">
+
+<!-- Single Choice Search Widget -->
+<v-modal v-if=" widgetType === 'single' "
+         :title=" 'Choose ' + element.label"
+         :visible="isShowWidget"
+         :on-ok="hideWidget"
+         :on-cancel="hideWidget">
+
+    <div class="isui-table-wrapper">
+        <table class="isui-table">
+            <thead>
+            <tr>
+                <th>
+                    <span v-if=" widgetType === 'single' ">choose</span>
+                </th>
+                <th v-for="th in widgetColumns">{{ th.name }}</th>
+            </tr>
+            </thead>
+            <tr v-for="tr in widgetTable" track-by="$index" :class="{'isui-table-choose': tr.choose}">
+                <td><input v-on:click="singleChoose($event, tr)" v-model="tr.choose" type="checkbox">
+                <td v-for="td in tr.data" track-by="$index">{{ td }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="isui-pagination-wrapper">
+        <v-pagination :current.sync="currentPage" :show-total="showTotal" :total="totalColumns"
+                      class="isui-pagination"></v-pagination>
+    </div>
+
+
+    <!--　用来隐藏页脚　-->
+    <div slot="footer">
+    </div>
+
+
+
+</v-modal>
+
+
+<!-- Multi Choice Search Widget -->
+<v-modal v-if=" widgetType === 'multi' "
+         :title=" 'Choose ' + element.label"
+         :visible="isShowWidget"
+         :on-ok="hideWidget"
+         :on-cancel="hideWidget">
+
+    <div class="isui-table-wrapper">
+        <table class="isui-table">
+            <thead>
+            <tr>
+                <th>
+                    <input type="checkbox"/>
+                </th>
+                <th v-for="th in widgetColumns">{{ th.name }}</th>
+            </tr>
+            </thead>
+            <tr v-for="tr in widgetTable" track-by="$index" :class="{'isui-table-choose': tr.choose}">
+                <td><input v-model="tr.choose" type="checkbox"/></td>
+                <td v-for="td in tr.data" track-by="$index">{{ td }}</td>
+            </tr>
+        </table>
+    </div>
+
+</v-modal>
+
