@@ -129,7 +129,7 @@ export default class NavigatorModelFactory {
         _.map(hierarchies.hierarchies, (h)=> {
             hs.push(h);
             links.push({
-                label: `${h.name}:${h.id}`,
+                label: `${h.name}: ${h.id.substr(0,8)}`,
                 route: {
                     name: 'entity',
                     params: {
