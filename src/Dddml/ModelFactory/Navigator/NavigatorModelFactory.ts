@@ -54,7 +54,7 @@ export default class NavigatorModelFactory {
 
             // 插入导航栏标签
             links.push({
-                label: metadata.name + `: ${h.id.substr(0, 8)}`,
+                label: `${metadata.name}: ${h.id.substr(0, 8)}`,
                 route: {
                     name: 'entity',
                     params: {
@@ -167,7 +167,7 @@ export default class NavigatorModelFactory {
         _.map(hierarchies.hierarchies, (h)=> {
             hs.push(h);
             links.push({
-                label: `${h.name}:${h.id}`,
+                label: `${h.name}: ${h.id.substr(0, 8)}`,
                 route: {
                     name: 'entity',
                     params: {

@@ -68,6 +68,7 @@ export default Vue.extend({
                 this.postEntity = postData;
 
                 this.navigator = NavigatorModelFactory.createCreateSubEntity(hierarchies, this.$route.params.name);
+
             }, (response) => {
                 // error callback
             });
