@@ -99,6 +99,15 @@ export default class Property {
         return this._metadata.isValueObject;
     }
 
+    get isNavRelationship():boolean {
+        return this._metadata.isNavRelationship
+    }
+
+    get navRelationship() {
+        return this._metadata.navRelationship
+    }
+
+
     // *******************************************************
     // 覆盖默认的UI - 新增代码
     // 默认值为false（即采用默认的UI组件）

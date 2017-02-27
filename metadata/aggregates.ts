@@ -418,10 +418,10 @@ export const AGGREGATES_METADATA = [
         },
         "properties": [
             {
-            "name": "contextId",
-            "label": "Context Id",
-            "type": "string"
-        },
+                "name": "contextId",
+                "label": "Context Id",
+                "type": "string"
+            },
             {
                 "name": "expression",
                 "label": "Expression",

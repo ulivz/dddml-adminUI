@@ -29,8 +29,12 @@ export default class EntityCollection {
     constructor(name: string,
                 hierarchies: EntityHierarchies = null,
                 data: EntityInterface[] = []) {
+
         this.data         = data;
         this._hierarchies = hierarchies;
+
+        console.log(name);
+        console.log(hierarchies);
 
         let path: string[] = hierarchies ? hierarchies.metadataPath : [];
         path.push(_.upperFirst(name));
@@ -38,6 +42,7 @@ export default class EntityCollection {
         this.metadata = AggregatesMetadata
             .getInstance()
             .getMetadataByHierarchies(path);
+
     }
 
     static create(name: string,

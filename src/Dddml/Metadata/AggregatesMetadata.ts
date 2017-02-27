@@ -1,9 +1,11 @@
-import {AGGREGATES_METADATA} from '../../../metadata/aggregates';
+import { AGGREGATES_METADATA } from '../../../metadata/aggregates';
 import EntityMetadata from "./EntityMetadata";
 import EntityMetadataCollection from "./EntityMetadataCollection";
 
 export default class AggregatesMetadata extends EntityMetadataCollection {
     private static metadata: AggregatesMetadata;
+
+    private static ObjectNamePluralMap;
 
     /**
      * 获取元数据的实例 - 单例模式
@@ -60,6 +62,29 @@ export default class AggregatesMetadata extends EntityMetadataCollection {
         ).plural;
 
     }
+
+
+    static getObjectNamePluralMap() {
+
+        if(!AggregatesMetadata.ObjectNamePluralMap){
+
+            let map = [];
+            function recurse(collection) {
+                for(let entity of collection){
+                    map[entity.name] = entity.plural
+
+                    if(entity.entities){
+                        recurse(entity.entities)
+                    }
+                }
+            }
+
+            recurse(AGGREGATES_METADATA);
+            AggregatesMetadata.ObjectNamePluralMap = map;
+        }
+        return AggregatesMetadata.ObjectNamePluralMap;
+    }
+
 
     /**
      * 返回层次结构中的最后一个实体的元数据

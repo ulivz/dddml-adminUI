@@ -60,7 +60,8 @@ export default class PropertyMetadata {
     // 新增：itemType && itemEnumValuesKey (可枚举的值对象的集合)
     // ********************************************************
     get isSet(): boolean {
-        return this._rawMetadata.itemEnumValuesKey ? true : false;
+        return !!(this._rawMetadata.itemEnumValuesKey
+               && this._rawMetadata.itemType);
     }
 
     get set() {
@@ -70,18 +71,42 @@ export default class PropertyMetadata {
     }
 
     // ********************************************************
+    // 新增：itemType && !itemEnumValuesKey (导航关系，导航到另一实体)
+    // ********************************************************
+    get isNavRelationship() {
+        return !!(!this._rawMetadata.itemEnumValuesKey
+        　　　　&& this._rawMetadata.itemType);
+    }
+
+    get navRelationship() {
+        if(this.isNavRelationship){
+            return AggregatesMetadata
+                .getObjectNamePluralMap()[this._rawMetadata.itemType]
+        }
+        return null;
+    }
+
+    // ********************************************************
     // 新增：type && enumValuesKey (可枚举的值对象)
     // ********************************************************
     get isMap(): boolean {
-        return this._rawMetadata.enumValuesKey ? true : false;
+        return !!(this._rawMetadata.type
+        　　　　&& this._rawMetadata.enumValuesKey);
     }
 
     get map() {
-        return _.find(
-            ENUM_VALUES_MAP, ['name', this._rawMetadata.enumValuesKey]
-        ).values;
+        if (this.isMap) {
+            return _.find(
+                ENUM_VALUES_MAP, ['name',
+                    this._rawMetadata.enumValuesKey]
+            ).values;
+        }
+        return null;
     }
 
+    // ********************************************************
+    // 新增：referenceType (引用另一个实体)
+    // ********************************************************
     get isReferenceType() {
         return !!this._rawMetadata.referenceType;
     }
@@ -115,12 +140,16 @@ export default class PropertyMetadata {
 
         let referenceType = this._rawMetadata.referenceType; // 实体的name（单数）
 
-        return new referenceTypeClass({
-            refEntityName: referenceType,
-            refEntityPlural: AggregatesMetadata.getPluralByName(referenceType),
-            refPropName: this._rawMetadata.name,
-            refPropLabel: this._rawMetadata.label
-        })
+        if (this.isReferenceType) {
+            return new referenceTypeClass({
+                refEntityName: referenceType,
+                refEntityPlural: AggregatesMetadata.getPluralByName(referenceType),
+                refPropName: this._rawMetadata.name,
+                refPropLabel: this._rawMetadata.label
+            })
+        }
+
+        return null;
 
     }
 

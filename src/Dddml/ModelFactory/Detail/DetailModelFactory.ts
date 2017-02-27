@@ -14,8 +14,6 @@ export default class DetailModelFactory {
             DETAILS_CONFIG[entity.name].displayableFields
         );
 
-        console.log(displayableFields);
-        console.log(displayableFields);
         // 获得detail的视图模型
         // 这一步没有给定fields的值，fields=[]
         let detailModel    = new DetailModel(entity.name);

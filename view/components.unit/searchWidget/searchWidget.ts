@@ -7,11 +7,15 @@ export default Vue.extend({
         return {
             // 是否显示Modal
             isShowWidget : false,
+            // widget 表格体数据
             widgetTable: [],
+            // widget 表格头数据
             widgetColumns: [],
-            firstResult: 0,
+            // 返回的数据从　firstResult: 0,
             maxResults: 10,
+            // 当前页
             currentPage: 1,
+            // 引用的实体的复数名（用于请求）
             refEntityPlural: ''
         }
     },

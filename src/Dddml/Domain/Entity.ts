@@ -102,22 +102,28 @@ export default class Entity {
         return new Entity(this._hierarchies, data);
     }
 
+    // 获取子实体
     entities(name?: string): EntityCollection | EntityCollection[] {
 
         if (name) {
+
             let entities;
+            let navPropertyName;
 
-            console.info(this._rawData);
-            console.info(name);
-            console.info(this._rawData[_.lowerFirst(name)]);
+            for(let property of this.properties){
+                if(property.navRelationship === name){
+                    navPropertyName = property.name;
+                }
+            }
 
-            if (entities = this._rawData[_.lowerFirst(name)]) {
+            if (entities = this._rawData[_.lowerFirst(navPropertyName)]) {
                 return new EntityCollection(name, this.hierarchies, entities);
             }
 
             return null;
 
         } else {
+
             let _this = this;
 
             return <EntityCollection[]>_.map(this.metadata.subEntityPluralNames, function (name) {

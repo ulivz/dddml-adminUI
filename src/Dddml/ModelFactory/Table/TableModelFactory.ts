@@ -11,7 +11,7 @@ export default class TableModelFactory {
 
         _.map(Object.keys(
             TABLES_CONFIG[entityCollection.entityName].displayableFields
-        ), (field)=> {
+        ), (field) => {
             columns.push({
                 name: field
             })

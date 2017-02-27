@@ -38,7 +38,13 @@ export default Vue.extend({
 
             this.$http.get(hierarchies.apiPath).then((response) => {
 
+                console.log('----------------- response.data -----------------');
+                console.log(response.data);
+
                 let entity  = new Entity(hierarchies, response.data);
+
+                console.log('----------------- entity -----------------');
+                console.log(entity);
 
                 // 当前实体
                 this.entityTableData = DetailModelFactory.create(entity);
@@ -49,9 +55,10 @@ export default Vue.extend({
                 // console.log(`entity.entities()`);
                 // console.log(entity.entities());
                 // *******************************
-                if( entity.entities()[0] !== null ){
-                    this.subEntityTableData = TablesModelFactory.create(<EntityCollection[]>entity.entities());
-                }
+                // if( entity.entities()[0] !== null ){
+                console.info(entity.entities())
+                this.subEntityTableData = TablesModelFactory.create(<EntityCollection[]>entity.entities());
+                // }
 
                 // 导航栏数据
                 this.navigator = NavigatorModelFactory.createEntity(hierarchies);
