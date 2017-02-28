@@ -11,7 +11,8 @@ export default Vue.extend({
             widgetTable: [],
             // widget 表格头数据
             widgetColumns: [],
-            // 返回的数据从　firstResult: 0,
+            // 返回的数据从
+            firstResult: 0,
             maxResults: 10,
             // 当前页
             currentPage: 1,

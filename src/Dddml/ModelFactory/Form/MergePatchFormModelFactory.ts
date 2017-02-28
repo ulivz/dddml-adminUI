@@ -25,7 +25,7 @@ export default class MergePatchFormModelFactory {
 
         let hs = _.cloneDeep(hierarchies.hierarchies);
         hs.shift();
-        
+
         _.map(hs, (h)=> {
             name = _.lowerFirst(h.name);
             console.log(name);
