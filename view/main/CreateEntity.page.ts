@@ -67,17 +67,11 @@ export default Vue.extend({
                 id: null
             },]));
 
-            // console.log(entity);
-
             this.title = '新建 ' + entity.name;
 
-            // console.info(entity);
             this.form = FormModelFactory.create(
                 entity
             );
-
-            // console.info('this.form in createdEntity:');
-            // console.log(this.form);
 
             this.navigator = NavigatorModelFactory
                 .createCreateEntity(this.$route.params.name);

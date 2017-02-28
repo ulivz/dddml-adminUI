@@ -118,7 +118,6 @@ export default Vue.extend({
         this.$http.get(this.refEntityPlural + '/_count').then((response) => {
 
             this.totalColumns = parseInt(response.data);
-            console.log(this.totalColumns);
 
         })
 

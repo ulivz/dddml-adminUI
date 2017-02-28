@@ -6,11 +6,12 @@ import curry = require("lodash/curry");
 
 export default class MergePatchFormModelFactory {
     static create(hierarchies: EntityHierarchies,
-                  collectionName,
+                  nameArray,
                   aggregate: Entity,
                   data: EntityInterface,
                   id: string = null) {
-        collectionName = _.lowerFirst(collectionName);
+
+        let collectionName = _.lowerFirst(nameArray.name);
 
         data['commandType'] = 'MergePatch';
         data['version']     = aggregate.rawData['version'];
@@ -24,9 +25,10 @@ export default class MergePatchFormModelFactory {
 
         let hs = _.cloneDeep(hierarchies.hierarchies);
         hs.shift();
-
+        
         _.map(hs, (h)=> {
             name = _.lowerFirst(h.name);
+            console.log(name);
 
             let subEntity: Entity = (<EntityCollection>currentEntity.entities(name)).subEntity(h.id);
 
@@ -61,15 +63,19 @@ export default class MergePatchFormModelFactory {
 
             currentEntity.rawData['commandType'] = 'Create';
 
-            current[collectionName] = [currentEntity.rawData];
+            current[nameArray.navName] = [currentEntity.rawData];
+
         } else {
-            current[collectionName] = [{'commandType': 'Create'}];
+
+            current[nameArray.navName] = [{'commandType': 'Create'}];
         }
 
         let entity = new Entity(hierarchies.concat([{
             name: collectionName,
             id: id
-        }]), current[collectionName][0]);
+        }]), current[nameArray.navName][0]);
+
+        console.info(entity);
 
         return FormModelFactory.create(entity);
     }

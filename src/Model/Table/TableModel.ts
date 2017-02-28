@@ -5,7 +5,9 @@ export default class TableModel {
     public rows: TableRowModel[];
     public columns: ColumnInterface[];
 
-    constructor(name: string, rows: TableRowModel[] = [], columns: ColumnInterface[]) {
+    constructor(name: string,
+                rows: TableRowModel[] = [],
+                columns: ColumnInterface[]) {
         this.name    = name;
         this.rows    = rows;
         this.columns = columns;

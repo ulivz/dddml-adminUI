@@ -7,6 +7,7 @@ export default class TablesModelFactory {
         let tables = new TablesModel();
 
         for (let collection of entityCollections) {
+
             tables.addTable(TableModelFactory.create(collection));
         }
 

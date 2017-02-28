@@ -23,6 +23,7 @@ export default Vue.extend({
                 content: "",
                 type: "",
             },
+            routeParams: {}
         }
     },
     components: {
@@ -32,7 +33,7 @@ export default Vue.extend({
     },
     computed: {
         title(){
-            return `创建 ${this.$route.params.name} 的实体`
+            return `创建 ${this.routeParams.name} 的实体`
         }
     },
     events: {
@@ -52,6 +53,10 @@ export default Vue.extend({
     },
     route: {
         data(){
+
+            this.routeParams = JSON.parse(this.$route.params.name)
+            console.log(JSON.parse(this.$route.params.name));
+
             hierarchies = EntityHierarchies.createFromString(this.$route.params.hierarchies);
 
             this.$http.get(hierarchies.apiRootPath).then((response) => {
@@ -60,14 +65,14 @@ export default Vue.extend({
 
                 this.form = MergePatchFormModelFactory.create(
                     hierarchies,
-                    _.lowerFirst(this.$route.params.name),
+                    this.routeParams,
                     aggregate,
                     postData
                 );
 
                 this.postEntity = postData;
 
-                this.navigator = NavigatorModelFactory.createCreateSubEntity(hierarchies, this.$route.params.name);
+                this.navigator = NavigatorModelFactory.createCreateSubEntity(hierarchies, this.routeParams.name);
 
             }, (response) => {
                 // error callback

@@ -10,6 +10,8 @@ export default class EntityCollection {
     private metadata: EntityMetadata;
     private _hierarchies: EntityHierarchies;
 
+    private _navName: string
+
     get name() {
         return this.metadata.plural;
     }
@@ -26,15 +28,30 @@ export default class EntityCollection {
         return this._hierarchies;
     }
 
+    // ***************************************
+    // 新增代码 2017-2-28
+    // ***************************************
+    get navName() {
+        if (this._navName) {
+            return this._navName;
+        }
+        return null;
+    }
+
     constructor(name: string,
                 hierarchies: EntityHierarchies = null,
-                data: EntityInterface[] = []) {
+                data: EntityInterface[] = [],
+                navName?: string) {
 
         this.data         = data;
         this._hierarchies = hierarchies;
 
-        console.log(name);
-        console.log(hierarchies);
+        // ***************************************
+        // 新增代码 2017-2-28
+        // ***************************************
+        if (navName) {
+            this._navName = navName;
+        }
 
         let path: string[] = hierarchies ? hierarchies.metadataPath : [];
         path.push(_.upperFirst(name));

@@ -103,11 +103,18 @@ export default class Entity {
     }
 
     // 获取子实体
-    entities(name?: string): EntityCollection | EntityCollection[] {
+    // ***************************************
+    // 修改代码 2017-2-28
+    // 将返回数据的类型从 EntityCollection[] | EntityCollection 改成 any
+    // ***************************************
+    entities(name?: string): any {
 
+        // 实体 {name} 的复数 - 对应元数据的 {TermTags}
         if (name) {
 
             let entities;
+
+            // 属性名　- 对应元数据的｛tags｝
             let navPropertyName;
 
             for(let property of this.properties){
@@ -117,10 +124,14 @@ export default class Entity {
             }
 
             if (entities = this._rawData[_.lowerFirst(navPropertyName)]) {
-                return new EntityCollection(name, this.hierarchies, entities);
+
+                // ***************************************
+                // 新增代码 2017-2-28 - 新增 navPropertyName
+                // ***************************************
+                return new EntityCollection(name, this.hierarchies, entities, navPropertyName);
             }
 
-            return null;
+            return [];
 
         } else {
 

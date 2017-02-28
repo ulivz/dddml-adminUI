@@ -11,6 +11,7 @@ export default class TableModelFactory {
 
         _.map(Object.keys(
             TABLES_CONFIG[entityCollection.entityName].displayableFields
+
         ), (field) => {
             columns.push({
                 name: field
@@ -18,19 +19,19 @@ export default class TableModelFactory {
         });
 
         for (let entity of entityCollection.all()) {
-
             rows.push(
                 TableRowModelFactory.create(
                     entity,
                     columns
                 )
-            );
+            )
         }
 
         columns.push({
             name: '操作',
             width: '100px',
         });
+
 
         return new TableModel(entityCollection.name, rows, columns);
     }

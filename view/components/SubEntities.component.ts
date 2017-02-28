@@ -14,18 +14,24 @@ export default Vue.extend({
         VTable,
     },
     props: {
-        tables: Object
+        tables: Object,
     },
     computed: {},
     methods: {
         change(key){
+
             this.selected = true;
+
+            let _name = JSON.stringify({
+                name: key,
+                navName: this.tables.entityNavNameMap[key]
+            })
 
             this.createRoute = {
                 name: 'createSubEntity',
                 params: {
                     hierarchies: this.$route.params.hierarchies,
-                    name: key
+                    name: _name
                 }
             };
 
