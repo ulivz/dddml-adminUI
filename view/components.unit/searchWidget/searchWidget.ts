@@ -11,8 +11,9 @@ export default Vue.extend({
             widgetTable: [],
             // widget 表格头数据
             widgetColumns: [],
-            // 返回的数据从
+            // 从第0条开始
             firstResult: 0,
+            // 一页的显示多少数目
             maxResults: 10,
             // 当前页
             currentPage: 1,
@@ -34,18 +35,20 @@ export default Vue.extend({
 
             // 人工绑定值
             // 原因是：{v-model} 未能及时更新双向绑定的数据
-            tr.choose = e.target.checked;
+            if (e.target.checked) {
+                tr.choose = e.target.checked;
 
-            let index = searchWidgetFactory.find(this.widgetTable, tr)
+                let index = searchWidgetFactory.find(this.widgetTable, tr)
 
-            this.widgetTable.forEach(function (row, _index) {
-                if(_index !== index){
-                    row.choose = false;
-                }
-            })
+                this.widgetTable.forEach(function (row, _index) {
+                    if (_index !== index) {
+                        row.choose = false;
+                    }
+                })
 
-            this.element.value = tr.data[this.refPropIndex]
-            this.hideWidget()
+                this.element.value = tr.data[this.refPropIndex]
+                this.hideWidget()
+            }
         }
     },
     props: {
