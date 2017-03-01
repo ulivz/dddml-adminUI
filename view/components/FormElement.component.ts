@@ -13,8 +13,8 @@ export default Vue.extend({
             // multiSelectValue - 多选的值
             multiSelectOption: [],
             multiSelectValue: [],
-
-            widgetType: 'single'
+            widgetType: 'single',
+            isDisableInput: false
         }
     },
     watch: {
@@ -52,6 +52,14 @@ export default Vue.extend({
         }
     },
     created() {
+
+        // 判断是否需要禁止输入
+        if (this.element.propertyType) {
+            if(this.element.propertyType.isEntityId &&
+               this.element.propertyType.httpPostCreationEnabled){
+                this.isDisableInput = true;
+            }
+        }
 
         /* 当 type 为 8, 也就是说属性是isSet, 此处进行数据格式转化 */
         let _element = [];

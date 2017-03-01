@@ -411,6 +411,7 @@ export const AGGREGATES_METADATA = [
         "plural": "Terms",
         "label": "Term",
         "collectionLabel": "Terms",
+        httpPostCreationEnabled: true,
         "id": {
             "name": "termId",
             "label": "Term Id",
@@ -544,6 +545,7 @@ export const AGGREGATES_METADATA = [
         "plural": "Tags",
         "label": "Tag",
         "collectionLabel": "Tags",
+        httpPostCreationEnabled: true,
         "id": {
             "name": "tagId",
             "label": "Tag Id",

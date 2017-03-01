@@ -7,6 +7,7 @@ import FormElementModel from "./FormElementModel";
 import FormElementType from "./FormElementType";
 import * as uuid from 'uuid-lib';
 import {PROPERTY_VIEW_CONFIG_OVERLAYS as OVERLAYS} from 'config/Property/propertyViewConfigOverlays.ts';
+import PropertyTypeInterface from './PropertyTypeInterface'
 
 export default class EntityFormModel {
     private entity: Entity;
@@ -34,22 +35,27 @@ export default class EntityFormModel {
         this.build();
     }
 
-    protected addItemFromProperty(property: Property) {
+    /**
+     *
+     * @param property 属性
+     * @param propertyType 该属性是否是实体的id
+     */
+    protected addItemFromProperty(property: Property, propertyType?:PropertyTypeInterface) {
 
-        if (property.isValueObject) {
-            console.info(property);
+        if (!propertyType) {
+            propertyType = null
         }
 
         // 重置UI
         if (property.controlType && property.isBuiltInType) {
 
             if (!this.data[property.name]) {
-                // 设置初始值
                 this.data[property.name] = '';
             }
 
             this.elements.push(
                 new FormElement(
+                    propertyType,
                     property.name,
                     property.label,
                     this.data,
@@ -65,6 +71,7 @@ export default class EntityFormModel {
 
             this.elements.push(
                 new FormElement(
+                    propertyType,
                     property.name,
                     property.label,
                     this.data,
@@ -78,6 +85,7 @@ export default class EntityFormModel {
 
             this.elements.push(
                 new FormElement(
+                    propertyType,
                     property.name,
                     property.label,
                     this.data,                      // parentData
@@ -94,6 +102,7 @@ export default class EntityFormModel {
 
             this.elements.push(
                 new FormElement(
+                    propertyType,
                     property.name,
                     property.label,
                     this.data,
@@ -109,6 +118,7 @@ export default class EntityFormModel {
 
             this.elements.push(
                 new FormElement(
+                    propertyType,
                     property.name,
                     property.label,
                     this.data,                      // parentData
@@ -131,19 +141,20 @@ export default class EntityFormModel {
 
     protected build() {
 
-        // 添加id
-        this.addItemFromProperty(this.entity.id);
+        // 第１步，将实体的id添加进入表单
+        this.addItemFromProperty(this.entity.id, {
+            isEntityId: true,
+            httpPostCreationEnabled: this.entity.httpPostCreationEnabled
+        });
 
         var self = this;
 
         // 如果当前实体在 UI_CONFIG 中能找到，则返回 UI_CONFIG 对应的配置对象
         let OVERLAY_ENTITY = _.find(OVERLAYS, function (o) {
-
-            console.log(self.entity);
             return o.name === self.entity.name;
         })
 
-        // 遍历实体的属性
+        // 第２步，将实体的可以显示的属性添加进入表单
         for (let property of self.entity.properties) {
 
             // 只配置允许添加的属性
@@ -153,7 +164,6 @@ export default class EntityFormModel {
                 if (OVERLAY_ENTITY) {
 
                     console.info(`在配置中发现本实体 ${self.entity.name} `);
-
                     let OVERLAY_PROPERTY = _.find(OVERLAY_ENTITY.properties, function (o) {
                         return o.name = property.name
                     })

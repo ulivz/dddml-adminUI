@@ -1,7 +1,7 @@
 import AggregatesMetadata from "src/Dddml/Metadata/AggregatesMetadata";
-import * as Vue from 'vue'
-import {TREES_METADATA} from "metadata/trees";
-import {GLOBAL_CONFIG} from "config/global/global-config.ts"
+import * as Vue from 'vue';
+import { TREES_METADATA } from "metadata/trees";
+import { GLOBAL_CONFIG } from "config/global/global-config.ts"
 
 var aggregatesMetadata = AggregatesMetadata.getInstance();
 

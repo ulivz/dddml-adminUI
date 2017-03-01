@@ -4,7 +4,7 @@ import defaultFilter from 'view/Filter/defaultFilter';
 import routes from '../routes';
 import { GLOBAL_CONFIG } from 'config/global/global-config';
 import * as VueResource from 'vue-resource';
-import * as vueBeauty from 'vue-beauty'
+import * as vueBeauty from 'vue-beauty';
 
 export default class Application {
     protected static instance: Application;

@@ -14,7 +14,7 @@ export default class Entity {
 
     constructor(hierarchies: EntityHierarchies,
                 data: EntityInterface = {}) {
-        this._rawData  = data;
+        this._rawData = data;
         // 获得源数据
         this._metadata = AggregatesMetadata
             .getInstance()
@@ -29,6 +29,10 @@ export default class Entity {
 
     get label() {
         return this._metadata.label;
+    }
+
+    get httpPostCreationEnabled() {
+        return this._metadata.httpPostCreationEnabled
     }
 
     get hierarchies(): EntityHierarchies {
@@ -117,8 +121,8 @@ export default class Entity {
             // 属性名　- 对应元数据的｛tags｝
             let navPropertyName;
 
-            for(let property of this.properties){
-                if(property.navRelationship === name){
+            for (let property of this.properties) {
+                if (property.navRelationship === name) {
                     navPropertyName = property.name;
                 }
             }
@@ -156,7 +160,6 @@ export default class Entity {
         } else if (this.id.isValueObject) {
             id = this.id.data.toString();
         }
-
         return encode ? encodeURI(id) : id;
     }
 }

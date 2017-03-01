@@ -1,4 +1,5 @@
 import FormElementType from "./FormElementType";
+import PropertyTypeInterface from './PropertyTypeInterface';
 
 export default class FormElementModel {
     private parentData;
@@ -6,6 +7,7 @@ export default class FormElementModel {
     private _label;
     private _type;
     private _extData;
+    private _propertyType;
 
     public static typeMap = {
         'bool': FormElementType.Toggle,
@@ -18,16 +20,24 @@ export default class FormElementModel {
         'SearchWidget': FormElementType.SearchWidget
     };
 
-    constructor(name: string,
+    constructor(propertyType: PropertyTypeInterface,
+                name: string,
                 label: string,
                 parentData,
                 type = FormElementType.Input, /* 默认为输入框 */
                 extData = null) {
-        this._name      = name;
-        this._label     = label;
-        this.parentData = parentData;
-        this._type      = type;
-        this._extData   = extData;
+
+
+        this._propertyType = propertyType
+        this._name         = name;
+        this._label        = label;
+        this.parentData    = parentData;
+        this._type         = type;
+        this._extData      = extData;
+    }
+
+    get propertyType() {
+        return this._propertyType;
     }
 
     get label() {

@@ -52,7 +52,6 @@ export default class PropertyMetadata {
                 PropertyMetadata.builtInTypes, this.type
             );
         }
-
         return false;
     }
 

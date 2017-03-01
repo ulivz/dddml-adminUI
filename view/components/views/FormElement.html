@@ -3,7 +3,7 @@
 
     <!-- Input -->
     <div class="col-sm-10" v-if="element.type === 1">
-        <input type="text" class="form-control" v-model="element.value" name="{{element.elementName}}"
+        <input :disabled="isDisableInput" type="text" class="form-control" v-model="element.value" name="{{element.elementName}}"
                id="{{element.elementName}}">
     </div>
 

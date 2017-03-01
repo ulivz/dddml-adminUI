@@ -33,25 +33,30 @@ export default class ValueObjectFormModel {
     }
 
     protected addItemFromProperty(property: Property) {
+
         if (property.isBuiltInType) {
             this.parentData[this.name][property.name] = property.data ? property.data : "";
 
             this.elements.push(
                 new FormElement(
+                    null,
                     property.name,
                     property.label,
                     this.parentData[this.name],
                     FormElementModel.typeMap[property.type]
                 ));
+
         } else if (property.isMap) {
             this.elements.push(
                 new FormElement(
+                    null,
                     property.name,
                     property.label,
                     this.parentData[this.name],
                     FormElementType.SingleSelect,
                     property.map
                 ));
+
         } else if (property.isValueObject) {
             this.parentData[this.name][property.name] = property.data ? property.data : {};
 
@@ -67,7 +72,7 @@ export default class ValueObjectFormModel {
     }
 
     protected build() {
-        _.map(this.valueObject.properties, (property)=> {
+        _.map(this.valueObject.properties, (property) => {
             this.addItemFromProperty(property);
         });
     }

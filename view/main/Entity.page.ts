@@ -44,24 +44,17 @@ export default Vue.extend({
                 this.entityTableData = DetailModelFactory.create(entity);
 
                 // 子实体
-                console.log(entity.entities());
-
                 let entities = entity.entities();
                 this.subEntityTableData = TablesModelFactory.create(<EntityCollection[]>entities);
 
-                console.log(this.subEntityTableData);
-
                 let entityNavNameMap = {};
-                console.log(Object.prototype.toString.call(entities));
 
                 if (Object.prototype.toString.call(entities) === '[object Array]') {
-                    for(let entityCollection of entity.entities()){
 
+                    for(let entityCollection of entity.entities()){
                         entityNavNameMap[entityCollection.name] = entityCollection.navName;
                     }
                 }
-
-                console.log(entityNavNameMap);
 
                 this.subEntityTableData.entityNavNameMap = entityNavNameMap;
 

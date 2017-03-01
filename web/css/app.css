@@ -131,3 +131,20 @@ table {
 .isui-pagination{
     display: inline-block;
 }
+
+.form-control{
+    border-radius: 3px;
+}
+
+/*.sidebar-menu{*/
+    /*overflow-y: scroll;*/
+/*}*/
+
+/*.main-sidebar {*/
+    /*position: fixed;*/
+/*}*/
+
+/*.main-header {*/
+    /*position: absolute;*/
+    /*top:0*/
+/*}*/

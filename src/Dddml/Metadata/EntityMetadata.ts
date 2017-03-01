@@ -24,6 +24,13 @@ export default class EntityMetadata {
         return this._entity.collectionLabel;
     }
 
+    get httpPostCreationEnabled() {
+        if (this._entity.httpPostCreationEnabled) {
+            return this._entity.httpPostCreationEnabled;
+        }
+        return false;
+    }
+
     get id() {
         return new PropertyMetadata(this._entity.id);
     }
