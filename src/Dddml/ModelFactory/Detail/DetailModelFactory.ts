@@ -32,9 +32,6 @@ export default class DetailModelFactory {
             // entityMetadata.id -> PropertyMetadata
             // entity.id -> Property
 
-            // console.log(name);
-            // console.log(entityMetadata);
-
             // id
             if (name === entityMetadata.id.name) {
                 // console.log(name)

@@ -1,0 +1,12 @@
+	<!-- link 类型的按钮 -->
+	<a v-if=" btn.btnType === 1 " v-link=" btn.link " class="{{btn.styleClasses}}" style="display: inline-block">
+		<i class="fa {{btn.icon}}"></i>
+		{{btn.label}}
+	</a>
+	
+	<!-- 执行某方法的按钮 -->
+	<a v-if=" btn.btnType === 2 " @click=" btn.method " class="{{btn.styleClasses}}" style="display: inline-block">
+		<i class="fa {{btn.icon}}"></i>
+			{{btn.label}}
+	</a>
+

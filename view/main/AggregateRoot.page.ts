@@ -1,6 +1,7 @@
 import VTable from 'components/Table';
 import Navigator from 'components/Navigator.component';
 import Alert from 'components/Alert.component';
+import meauBtn from 'view/components.unit/btnMeau/btnMeau.ts';
 import * as Vue from 'vue'
 import EntityCollection from "src/Dddml/Domain/EntityCollection";
 import TableModelFactory from "src/Dddml/ModelFactory/Table/TableModelFactory";
@@ -11,7 +12,7 @@ export default Vue.extend({
     data(){
         return {
             table: null,
-            createBtn: null,
+            btnMeau: null,
             navigator: null,
             showError: false,
             errorMessage: "",
@@ -20,11 +21,17 @@ export default Vue.extend({
     components: {
         VTable,
         Navigator,
-        Alert
+        Alert,
+        meauBtn
     },
     computed: {
         title(){
             return this.$route.params.name;
+        }
+    },
+    methods: {
+        filterList() {
+            console.info('enter');
         }
     },
     route: {
@@ -35,8 +42,6 @@ export default Vue.extend({
             let entityCollectionName = this.$route.params.name;
 
             this.$http.get(entityCollectionName).then((response) => {
-                console.info('RES：');
-                console.log(response);
 
                 let entityCollection = EntityCollection.create(
                     entityCollectionName,
@@ -44,39 +49,52 @@ export default Vue.extend({
                     response.data
                 );
 
-                console.log(entityCollection);
-
                 this.table = TableModelFactory.create(entityCollection);
 
-                console.info(this.table);
+                let btnMeau = [];
 
-                this.createBtn = {
-                    styleClasses: 'btn btn-block btn-warning',
+                btnMeau[0] = {
+                    styleClasses: 'btn btn-warning',
+                    btnType: 1,
+                    label: '创建',
+                    icon: 'fa-pencil',
                     link: {
-                        label: '创建',
-                        route: {
-                            name: 'createEntity',
-                            params: {
-                                name: entityCollection.name,
-                            }
-                        },
-                    },
+                        name: 'createEntity',
+                        params: {
+                            name: entityCollection.name,
+                        }
+                    }
                 };
+
+                let self = this;
+
+                btnMeau[1] = {
+                    btnType: 2,
+                    icon: 'fa-filter',
+                    styleClasses: 'btn btn-success',
+                    label: '过滤',
+                    method: self.filterList
+                };
+
+                this.btnMeau = btnMeau;
+                console.log(this.btnMeau);
 
                 this.navigator = NavigatorModelFactory
                     .createEntities(this.$route.params.name);
+
+
             }, (response) => {
-                this.showError = true;
+                this.showError    = true;
                 this.errorMessage = response.statusText;
             });
         }
     },
     ready(){
         this.$watch('$route.params.name', function () {
-            this.table = null;
-            this.navigator = null;
-            this.createBtn = null;
-            this.showError = false;
+            this.table        = null;
+            this.navigator    = null;
+            this.btnMeau    = null;
+            this.showError    = false;
             this.errorMessage = '';
         })
     }

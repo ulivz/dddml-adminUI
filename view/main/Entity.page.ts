@@ -42,6 +42,9 @@ export default Vue.extend({
 
                 // 当前实体
                 this.entityTableData = DetailModelFactory.create(entity);
+                console.log(this.entityTableData);
+
+
 
                 // 子实体
                 let entities = entity.entities();
@@ -50,7 +53,6 @@ export default Vue.extend({
                 let entityNavNameMap = {};
 
                 if (Object.prototype.toString.call(entities) === '[object Array]') {
-
                     for(let entityCollection of entity.entities()){
                         entityNavNameMap[entityCollection.name] = entityCollection.navName;
                     }
