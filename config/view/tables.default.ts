@@ -50,6 +50,13 @@ export default {
             active: {},
       }
     },
+    Context: {
+      displayableFields: {
+            contextId: {},
+            description: {},
+            active: {},
+      }
+    },
     Term: {
       displayableFields: {
             termId: {},

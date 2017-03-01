@@ -53,6 +53,46 @@ export const AGGREGATES_METADATA = [
                 "name": "tires",
                 "label": "Tires",
                 "itemType": "Tire"
+            }],
+        "filteringProperties": [{
+            name: "Id",
+            typeName: "string",
+            targetPropertyName: "id"
+        },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
         ,
         "entities": [
@@ -281,6 +321,56 @@ export const AGGREGATES_METADATA = [
                 "name": "buildings",
                 "label": "Buildings",
                 "itemType": "Building"
+            }],
+        "filteringProperties": [{
+            name: "Id",
+            typeName: "string",
+            targetPropertyName: "id"
+        },
+            {
+                name: "Address",
+                typeName: "string",
+                targetPropertyName: "address"
+            },
+            {
+                name: "City",
+                typeName: "string",
+                targetPropertyName: "city"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
         ,
         "entities": [
@@ -407,22 +497,117 @@ export const AGGREGATES_METADATA = [
         ]
     },
     {
+        "name": "Context",
+        "plural": "Contexts",
+        "label": "Context",
+        "collectionLabel": "Contexts",
+        "id": {
+            "name": "contextId",
+            "label": "Context Id",
+            "type": "string"
+        },
+        "properties": [{
+            "name": "description",
+            "label": "Description",
+            "type": "string"
+        },
+            {
+                "name": "version",
+                "label": "Version",
+                "type": "long"
+            },
+            {
+                "name": "createdBy",
+                "label": "Created By",
+                "type": "string"
+            },
+            {
+                "name": "createdAt",
+                "label": "Created At",
+                "type": "DateTime"
+            },
+            {
+                "name": "updatedBy",
+                "label": "Updated By",
+                "type": "string"
+            },
+            {
+                "name": "updatedAt",
+                "label": "Updated At",
+                "type": "DateTime"
+            },
+            {
+                "name": "active",
+                "label": "Active",
+                "type": "bool"
+            },
+            {
+                "name": "deleted",
+                "label": "Deleted",
+                "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "ContextId",
+            typeName: "string",
+            targetPropertyName: "contextId"
+        },
+            {
+                name: "Description",
+                typeName: "string",
+                targetPropertyName: "description"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            }]
+    },
+    {
         "name": "Term",
         "plural": "Terms",
         "label": "Term",
         "collectionLabel": "Terms",
-        httpPostCreationEnabled: true,
         "id": {
             "name": "termId",
             "label": "Term Id",
             "type": "string"
         },
-        "properties": [
-            {
-                "name": "contextId",
-                "label": "Context Id",
-                "type": "string"
-            },
+        "properties": [{
+            "name": "contextId",
+            "label": "Context Id",
+            "type": "string",
+            referenceType: "Context"
+        },
             {
                 "name": "expression",
                 "label": "Expression",
@@ -483,6 +668,67 @@ export const AGGREGATES_METADATA = [
                 "name": "tags",
                 "label": "Tags",
                 "itemType": "TermTag"
+            }],
+        "httpPostCreationEnabled": true,
+        "filteringProperties": [{
+            name: "TermId",
+            typeName: "string",
+            targetPropertyName: "termId"
+        },
+            {
+                name: "ContextId",
+                typeName: "string",
+                targetPropertyName: "contextId"
+            },
+            {
+                name: "Expression",
+                typeName: "string",
+                targetPropertyName: "expression"
+            },
+            {
+                name: "ChineseExpression",
+                typeName: "string",
+                targetPropertyName: "chineseExpression"
+            },
+            {
+                name: "Definition",
+                typeName: "string",
+                targetPropertyName: "definition"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
         ,
         "entities": [
@@ -545,7 +791,6 @@ export const AGGREGATES_METADATA = [
         "plural": "Tags",
         "label": "Tag",
         "collectionLabel": "Tags",
-        httpPostCreationEnabled: true,
         "id": {
             "name": "tagId",
             "label": "Tag Id",
@@ -595,6 +840,57 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "httpPostCreationEnabled": true,
+        "filteringProperties": [{
+            name: "TagId",
+            typeName: "string",
+            targetPropertyName: "tagId"
+        },
+            {
+                name: "Name",
+                typeName: "string",
+                targetPropertyName: "name"
+            },
+            {
+                name: "OrganizationId",
+                typeName: "string",
+                targetPropertyName: "organizationId"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
     },
     {
@@ -677,6 +973,81 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Id",
+            typeName: "long",
+            targetPropertyName: "id"
+        },
+            {
+                name: "ImageName",
+                typeName: "string",
+                targetPropertyName: "imageName"
+            },
+            {
+                name: "ImagePath",
+                typeName: "string",
+                targetPropertyName: "imagePath"
+            },
+            {
+                name: "ImageType",
+                typeName: "string",
+                targetPropertyName: "imageType"
+            },
+            {
+                name: "IsDefault",
+                typeName: "bool",
+                targetPropertyName: "isDefault"
+            },
+            {
+                name: "SortNumber",
+                typeName: "int",
+                targetPropertyName: "sortNumber"
+            },
+            {
+                name: "RefererId",
+                typeName: "long",
+                targetPropertyName: "refererId"
+            },
+            {
+                name: "Description",
+                typeName: "string",
+                targetPropertyName: "description"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
     },
     {
@@ -743,6 +1114,66 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "OrganizationId",
+            typeName: "string",
+            targetPropertyName: "organizationId"
+        },
+            {
+                name: "Name",
+                typeName: "string",
+                targetPropertyName: "name"
+            },
+            {
+                name: "Description",
+                typeName: "string",
+                targetPropertyName: "description"
+            },
+            {
+                name: "Type",
+                typeName: "string",
+                targetPropertyName: "type"
+            },
+            {
+                name: "IsSummary",
+                typeName: "bool",
+                targetPropertyName: "isSummary"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
     },
     {
@@ -789,6 +1220,46 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Id",
+            typeName: "string",
+            targetPropertyName: "id"
+        },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
     },
     {
@@ -835,6 +1306,56 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Version",
+            typeName: "long",
+            targetPropertyName: "version"
+        },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "Id.OrganizationStructureTypeId",
+                typeName: "string",
+                targetPropertyName: "id.organizationStructureTypeId"
+            },
+            {
+                name: "Id.ParentId",
+                typeName: "string",
+                targetPropertyName: "id.parentId"
+            },
+            {
+                name: "Id.SubsidiaryId",
+                typeName: "string",
+                targetPropertyName: "id.subsidiaryId"
             }]
     },
     {
@@ -937,6 +1458,96 @@ export const AGGREGATES_METADATA = [
                 "name": "packageParts",
                 "label": "Package Parts",
                 "itemType": "PackagePart"
+            }],
+        "filteringProperties": [{
+            name: "PackageId",
+            typeName: "long",
+            targetPropertyName: "packageId"
+        },
+            {
+                name: "RowVersion",
+                typeName: "long",
+                targetPropertyName: "rowVersion"
+            },
+            {
+                name: "PackageType",
+                typeName: "int",
+                targetPropertyName: "packageType"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "SerialNumber",
+                typeName: "string",
+                targetPropertyName: "serialNumber"
+            },
+            {
+                name: "MaterialNumber",
+                typeName: "string",
+                targetPropertyName: "materialNumber"
+            },
+            {
+                name: "CustomerNumber",
+                typeName: "string",
+                targetPropertyName: "customerNumber"
+            },
+            {
+                name: "WorkOrderNumber",
+                typeName: "string",
+                targetPropertyName: "workOrderNumber"
+            },
+            {
+                name: "LotNumber",
+                typeName: "string",
+                targetPropertyName: "lotNumber"
+            },
+            {
+                name: "Rank",
+                typeName: "string",
+                targetPropertyName: "rank"
+            },
+            {
+                name: "Version",
+                typeName: "string",
+                targetPropertyName: "version"
+            },
+            {
+                name: "Quantity",
+                typeName: "int",
+                targetPropertyName: "quantity"
+            },
+            {
+                name: "IsMixed",
+                typeName: "bool",
+                targetPropertyName: "isMixed"
             }]
         ,
         "entities": [
@@ -1121,6 +1732,101 @@ export const AGGREGATES_METADATA = [
                 "name": "yearPlans",
                 "label": "Year Plans",
                 "itemType": "YearPlan"
+            }],
+        "filteringProperties": [{
+            name: "BirthDate",
+            typeName: "DateTime",
+            targetPropertyName: "birthDate"
+        },
+            {
+                name: "Email",
+                typeName: "string",
+                targetPropertyName: "email"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "PersonalName.FirstName",
+                typeName: "string",
+                targetPropertyName: "personalName.firstName"
+            },
+            {
+                name: "PersonalName.LastName",
+                typeName: "string",
+                targetPropertyName: "personalName.lastName"
+            },
+            {
+                name: "RefToEntInAnotherAggInst.PackageId",
+                typeName: "long",
+                targetPropertyName: "refToEntInAnotherAggInst.packageId"
+            },
+            {
+                name: "RefToEntInAnotherAggInst.PartId",
+                typeName: "long",
+                targetPropertyName: "refToEntInAnotherAggInst.partId"
+            },
+            {
+                name: "Loves.FirstName",
+                typeName: "string",
+                targetPropertyName: "loves.firstName"
+            },
+            {
+                name: "Loves.LastName",
+                typeName: "string",
+                targetPropertyName: "loves.lastName"
+            },
+            {
+                name: "EmergencyContact.PersonalNameFirstName",
+                typeName: "string",
+                targetPropertyName: "emergencyContact.personalName.firstName"
+            },
+            {
+                name: "EmergencyContact.PersonalNameLastName",
+                typeName: "string",
+                targetPropertyName: "emergencyContact.personalName.lastName"
+            },
+            {
+                name: "EmergencyContact.PhoneNumber",
+                typeName: "string",
+                targetPropertyName: "emergencyContact.phoneNumber"
+            },
+            {
+                name: "EmergencyContact.Address",
+                typeName: "string",
+                targetPropertyName: "emergencyContact.address"
             }]
         ,
         "entities": [
@@ -1354,6 +2060,51 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "TeamName",
+            typeName: "string",
+            targetPropertyName: "teamName"
+        },
+            {
+                name: "Description",
+                typeName: "string",
+                targetPropertyName: "description"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
     },
     {
@@ -1415,6 +2166,61 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "WarehouseId",
+            typeName: "string",
+            targetPropertyName: "warehouseId"
+        },
+            {
+                name: "Name",
+                typeName: "string",
+                targetPropertyName: "name"
+            },
+            {
+                name: "Description",
+                typeName: "string",
+                targetPropertyName: "description"
+            },
+            {
+                name: "IsInTransit",
+                typeName: "bool",
+                targetPropertyName: "isInTransit"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
     },
     {
@@ -1502,6 +2308,86 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "LocatorId",
+            typeName: "string",
+            targetPropertyName: "locatorId"
+        },
+            {
+                name: "WarehouseId",
+                typeName: "string",
+                targetPropertyName: "warehouseId"
+            },
+            {
+                name: "ParentLocatorId",
+                typeName: "string",
+                targetPropertyName: "parentLocatorId"
+            },
+            {
+                name: "LocatorType",
+                typeName: "string",
+                targetPropertyName: "locatorType"
+            },
+            {
+                name: "PriorityNumber",
+                typeName: "string",
+                targetPropertyName: "priorityNumber"
+            },
+            {
+                name: "IsDefault",
+                typeName: "bool",
+                targetPropertyName: "isDefault"
+            },
+            {
+                name: "X",
+                typeName: "string",
+                targetPropertyName: "x"
+            },
+            {
+                name: "Y",
+                typeName: "string",
+                targetPropertyName: "y"
+            },
+            {
+                name: "Z",
+                typeName: "string",
+                targetPropertyName: "z"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
     },
     {
@@ -1553,6 +2439,56 @@ export const AGGREGATES_METADATA = [
                 "name": "deleted",
                 "label": "Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Quantity",
+            typeName: "int",
+            targetPropertyName: "quantity"
+        },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "StorageId.ProductId",
+                typeName: "string",
+                targetPropertyName: "storageId.productId"
+            },
+            {
+                name: "StorageId.LocatorId",
+                typeName: "string",
+                targetPropertyName: "storageId.locatorId"
             }]
     },
     {
@@ -1646,6 +2582,86 @@ export const AGGREGATES_METADATA = [
                 "name": "movementEntries",
                 "label": "Movement Entries",
                 "itemType": "MovementEntry"
+            }],
+        "filteringProperties": [{
+            name: "MovementTransactionId",
+            typeName: "string",
+            targetPropertyName: "movementTransactionId"
+        },
+            {
+                name: "SourceLocatorId",
+                typeName: "string",
+                targetPropertyName: "sourceLocatorId"
+            },
+            {
+                name: "TargetLocatorId",
+                typeName: "string",
+                targetPropertyName: "targetLocatorId"
+            },
+            {
+                name: "ProductId",
+                typeName: "string",
+                targetPropertyName: "productId"
+            },
+            {
+                name: "Quantity",
+                typeName: "int",
+                targetPropertyName: "quantity"
+            },
+            {
+                name: "IsInSameHouse",
+                typeName: "bool",
+                targetPropertyName: "isInSameHouse"
+            },
+            {
+                name: "ProcessState",
+                typeName: "string",
+                targetPropertyName: "processState"
+            },
+            {
+                name: "ErrorName",
+                typeName: "string",
+                targetPropertyName: "errorName"
+            },
+            {
+                name: "Message",
+                typeName: "string",
+                targetPropertyName: "message"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
             }]
         ,
         "entities": [
@@ -1817,6 +2833,86 @@ export const AGGREGATES_METADATA = [
                 "name": "carDeleted",
                 "label": "Car Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Version",
+            typeName: "long",
+            targetPropertyName: "version"
+        },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "CarVersion",
+                typeName: "long",
+                targetPropertyName: "carVersion"
+            },
+            {
+                name: "CarCreatedBy",
+                typeName: "string",
+                targetPropertyName: "carCreatedBy"
+            },
+            {
+                name: "CarCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "carCreatedAt"
+            },
+            {
+                name: "CarUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "carUpdatedBy"
+            },
+            {
+                name: "CarUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "carUpdatedAt"
+            },
+            {
+                name: "CarActive",
+                typeName: "bool",
+                targetPropertyName: "carActive"
+            },
+            {
+                name: "CarDeleted",
+                typeName: "bool",
+                targetPropertyName: "carDeleted"
+            },
+            {
+                name: "CarWheelId.CarId",
+                typeName: "string",
+                targetPropertyName: "carWheelId.carId"
+            },
+            {
+                name: "CarWheelId.WheelId",
+                typeName: "string",
+                targetPropertyName: "carWheelId.wheelId"
             }]
     },
     {
@@ -1898,6 +2994,86 @@ export const AGGREGATES_METADATA = [
                 "name": "carDeleted",
                 "label": "Car Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Version",
+            typeName: "long",
+            targetPropertyName: "version"
+        },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "CarVersion",
+                typeName: "long",
+                targetPropertyName: "carVersion"
+            },
+            {
+                name: "CarCreatedBy",
+                typeName: "string",
+                targetPropertyName: "carCreatedBy"
+            },
+            {
+                name: "CarCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "carCreatedAt"
+            },
+            {
+                name: "CarUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "carUpdatedBy"
+            },
+            {
+                name: "CarUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "carUpdatedAt"
+            },
+            {
+                name: "CarActive",
+                typeName: "bool",
+                targetPropertyName: "carActive"
+            },
+            {
+                name: "CarDeleted",
+                typeName: "bool",
+                targetPropertyName: "carDeleted"
+            },
+            {
+                name: "CarTireId.CarId",
+                typeName: "string",
+                targetPropertyName: "carTireId.carId"
+            },
+            {
+                name: "CarTireId.TireId",
+                typeName: "string",
+                targetPropertyName: "carTireId.tireId"
             }]
     },
     {
@@ -2030,6 +3206,146 @@ export const AGGREGATES_METADATA = [
                 "name": "carDeleted",
                 "label": "Car Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "MileAge",
+            typeName: "long",
+            targetPropertyName: "mileAge"
+        },
+            {
+                name: "WheelId",
+                typeName: "string",
+                targetPropertyName: "wheelId"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "TireVersion",
+                typeName: "long",
+                targetPropertyName: "tireVersion"
+            },
+            {
+                name: "TireCreatedBy",
+                typeName: "string",
+                targetPropertyName: "tireCreatedBy"
+            },
+            {
+                name: "TireCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "tireCreatedAt"
+            },
+            {
+                name: "TireUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "tireUpdatedBy"
+            },
+            {
+                name: "TireUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "tireUpdatedAt"
+            },
+            {
+                name: "TireActive",
+                typeName: "bool",
+                targetPropertyName: "tireActive"
+            },
+            {
+                name: "TireDeleted",
+                typeName: "bool",
+                targetPropertyName: "tireDeleted"
+            },
+            {
+                name: "CarVersion",
+                typeName: "long",
+                targetPropertyName: "carVersion"
+            },
+            {
+                name: "CarCreatedBy",
+                typeName: "string",
+                targetPropertyName: "carCreatedBy"
+            },
+            {
+                name: "CarCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "carCreatedAt"
+            },
+            {
+                name: "CarUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "carUpdatedBy"
+            },
+            {
+                name: "CarUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "carUpdatedAt"
+            },
+            {
+                name: "CarActive",
+                typeName: "bool",
+                targetPropertyName: "carActive"
+            },
+            {
+                name: "CarDeleted",
+                typeName: "bool",
+                targetPropertyName: "carDeleted"
+            },
+            {
+                name: "CarPositionId.CarId",
+                typeName: "string",
+                targetPropertyName: "carPositionId.carId"
+            },
+            {
+                name: "CarPositionId.TireId",
+                typeName: "string",
+                targetPropertyName: "carPositionId.tireId"
+            },
+            {
+                name: "CarPositionId.Id",
+                typeName: "long",
+                targetPropertyName: "carPositionId.id"
+            },
+            {
+                name: "TimePeriod.From",
+                typeName: "DateTime",
+                targetPropertyName: "timePeriod.from"
+            },
+            {
+                name: "TimePeriod.To",
+                typeName: "DateTime",
+                targetPropertyName: "timePeriod.to"
             }]
     },
     {
@@ -2131,6 +3447,106 @@ export const AGGREGATES_METADATA = [
                 "name": "gardenDeleted",
                 "label": "Garden Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Name",
+            typeName: "string",
+            targetPropertyName: "name"
+        },
+            {
+                name: "Description",
+                typeName: "string",
+                targetPropertyName: "description"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "GardenAddress",
+                typeName: "string",
+                targetPropertyName: "gardenAddress"
+            },
+            {
+                name: "GardenCity",
+                typeName: "string",
+                targetPropertyName: "gardenCity"
+            },
+            {
+                name: "GardenVersion",
+                typeName: "long",
+                targetPropertyName: "gardenVersion"
+            },
+            {
+                name: "GardenCreatedBy",
+                typeName: "string",
+                targetPropertyName: "gardenCreatedBy"
+            },
+            {
+                name: "GardenCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "gardenCreatedAt"
+            },
+            {
+                name: "GardenUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "gardenUpdatedBy"
+            },
+            {
+                name: "GardenUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "gardenUpdatedAt"
+            },
+            {
+                name: "GardenActive",
+                typeName: "bool",
+                targetPropertyName: "gardenActive"
+            },
+            {
+                name: "GardenDeleted",
+                typeName: "bool",
+                targetPropertyName: "gardenDeleted"
+            },
+            {
+                name: "BuildingId.GardenId",
+                typeName: "string",
+                targetPropertyName: "buildingId.gardenId"
+            },
+            {
+                name: "BuildingId.BuildingNumber",
+                typeName: "string",
+                targetPropertyName: "buildingId.buildingNumber"
             }]
     },
     {
@@ -2277,6 +3693,156 @@ export const AGGREGATES_METADATA = [
                 "name": "gardenDeleted",
                 "label": "Garden Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Name",
+            typeName: "string",
+            targetPropertyName: "name"
+        },
+            {
+                name: "Description",
+                typeName: "string",
+                targetPropertyName: "description"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "BuildingName",
+                typeName: "string",
+                targetPropertyName: "buildingName"
+            },
+            {
+                name: "BuildingDescription",
+                typeName: "string",
+                targetPropertyName: "buildingDescription"
+            },
+            {
+                name: "BuildingVersion",
+                typeName: "long",
+                targetPropertyName: "buildingVersion"
+            },
+            {
+                name: "BuildingCreatedBy",
+                typeName: "string",
+                targetPropertyName: "buildingCreatedBy"
+            },
+            {
+                name: "BuildingCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "buildingCreatedAt"
+            },
+            {
+                name: "BuildingUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "buildingUpdatedBy"
+            },
+            {
+                name: "BuildingUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "buildingUpdatedAt"
+            },
+            {
+                name: "BuildingActive",
+                typeName: "bool",
+                targetPropertyName: "buildingActive"
+            },
+            {
+                name: "BuildingDeleted",
+                typeName: "bool",
+                targetPropertyName: "buildingDeleted"
+            },
+            {
+                name: "GardenAddress",
+                typeName: "string",
+                targetPropertyName: "gardenAddress"
+            },
+            {
+                name: "GardenCity",
+                typeName: "string",
+                targetPropertyName: "gardenCity"
+            },
+            {
+                name: "GardenVersion",
+                typeName: "long",
+                targetPropertyName: "gardenVersion"
+            },
+            {
+                name: "GardenCreatedBy",
+                typeName: "string",
+                targetPropertyName: "gardenCreatedBy"
+            },
+            {
+                name: "GardenCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "gardenCreatedAt"
+            },
+            {
+                name: "GardenUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "gardenUpdatedBy"
+            },
+            {
+                name: "GardenUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "gardenUpdatedAt"
+            },
+            {
+                name: "GardenActive",
+                typeName: "bool",
+                targetPropertyName: "gardenActive"
+            },
+            {
+                name: "GardenDeleted",
+                typeName: "bool",
+                targetPropertyName: "gardenDeleted"
+            },
+            {
+                name: "RoomId.GardenId",
+                typeName: "string",
+                targetPropertyName: "roomId.gardenId"
+            },
+            {
+                name: "RoomId.BuildingNumber",
+                typeName: "string",
+                targetPropertyName: "roomId.buildingNumber"
+            },
+            {
+                name: "RoomId.RoomNumber",
+                typeName: "string",
+                targetPropertyName: "roomId.roomNumber"
             }]
     },
     {
@@ -2383,6 +3949,111 @@ export const AGGREGATES_METADATA = [
                 "name": "termDeleted",
                 "label": "Term Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Sequence",
+            typeName: "int",
+            targetPropertyName: "sequence"
+        },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "TermContextId",
+                typeName: "string",
+                targetPropertyName: "termContextId"
+            },
+            {
+                name: "TermExpression",
+                typeName: "string",
+                targetPropertyName: "termExpression"
+            },
+            {
+                name: "TermChineseExpression",
+                typeName: "string",
+                targetPropertyName: "termChineseExpression"
+            },
+            {
+                name: "TermDefinition",
+                typeName: "string",
+                targetPropertyName: "termDefinition"
+            },
+            {
+                name: "TermVersion",
+                typeName: "long",
+                targetPropertyName: "termVersion"
+            },
+            {
+                name: "TermCreatedBy",
+                typeName: "string",
+                targetPropertyName: "termCreatedBy"
+            },
+            {
+                name: "TermCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "termCreatedAt"
+            },
+            {
+                name: "TermUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "termUpdatedBy"
+            },
+            {
+                name: "TermUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "termUpdatedAt"
+            },
+            {
+                name: "TermActive",
+                typeName: "bool",
+                targetPropertyName: "termActive"
+            },
+            {
+                name: "TermDeleted",
+                typeName: "bool",
+                targetPropertyName: "termDeleted"
+            },
+            {
+                name: "TermTagId.TermId",
+                typeName: "string",
+                targetPropertyName: "termTagId.termId"
+            },
+            {
+                name: "TermTagId.TagId",
+                typeName: "string",
+                targetPropertyName: "termTagId.tagId"
             }]
     },
     {
@@ -2571,6 +4242,191 @@ export const AGGREGATES_METADATA = [
                 "name": "packageIsMixed",
                 "label": "Package Is Mixed",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "RowVersion",
+            typeName: "long",
+            targetPropertyName: "rowVersion"
+        },
+            {
+                name: "PackagePartType",
+                typeName: "int",
+                targetPropertyName: "packagePartType"
+            },
+            {
+                name: "ParentPackagePartId",
+                typeName: "long",
+                targetPropertyName: "parentPackagePartId"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "SerialNumber",
+                typeName: "string",
+                targetPropertyName: "serialNumber"
+            },
+            {
+                name: "MaterialNumber",
+                typeName: "string",
+                targetPropertyName: "materialNumber"
+            },
+            {
+                name: "CustomerNumber",
+                typeName: "string",
+                targetPropertyName: "customerNumber"
+            },
+            {
+                name: "WorkOrderNumber",
+                typeName: "string",
+                targetPropertyName: "workOrderNumber"
+            },
+            {
+                name: "LotNumber",
+                typeName: "string",
+                targetPropertyName: "lotNumber"
+            },
+            {
+                name: "Rank",
+                typeName: "string",
+                targetPropertyName: "rank"
+            },
+            {
+                name: "Version",
+                typeName: "string",
+                targetPropertyName: "version"
+            },
+            {
+                name: "Quantity",
+                typeName: "int",
+                targetPropertyName: "quantity"
+            },
+            {
+                name: "IsMixed",
+                typeName: "bool",
+                targetPropertyName: "isMixed"
+            },
+            {
+                name: "PackageRowVersion",
+                typeName: "long",
+                targetPropertyName: "packageRowVersion"
+            },
+            {
+                name: "PackagePackageType",
+                typeName: "int",
+                targetPropertyName: "packagePackageType"
+            },
+            {
+                name: "PackageCreatedBy",
+                typeName: "string",
+                targetPropertyName: "packageCreatedBy"
+            },
+            {
+                name: "PackageCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "packageCreatedAt"
+            },
+            {
+                name: "PackageUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "packageUpdatedBy"
+            },
+            {
+                name: "PackageUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "packageUpdatedAt"
+            },
+            {
+                name: "PackageActive",
+                typeName: "bool",
+                targetPropertyName: "packageActive"
+            },
+            {
+                name: "PackageDeleted",
+                typeName: "bool",
+                targetPropertyName: "packageDeleted"
+            },
+            {
+                name: "PackageSerialNumber",
+                typeName: "string",
+                targetPropertyName: "packageSerialNumber"
+            },
+            {
+                name: "PackageMaterialNumber",
+                typeName: "string",
+                targetPropertyName: "packageMaterialNumber"
+            },
+            {
+                name: "PackageCustomerNumber",
+                typeName: "string",
+                targetPropertyName: "packageCustomerNumber"
+            },
+            {
+                name: "PackageWorkOrderNumber",
+                typeName: "string",
+                targetPropertyName: "packageWorkOrderNumber"
+            },
+            {
+                name: "PackageLotNumber",
+                typeName: "string",
+                targetPropertyName: "packageLotNumber"
+            },
+            {
+                name: "PackageRank",
+                typeName: "string",
+                targetPropertyName: "packageRank"
+            },
+            {
+                name: "PackageVersion",
+                typeName: "string",
+                targetPropertyName: "packageVersion"
+            },
+            {
+                name: "PackageQuantity",
+                typeName: "int",
+                targetPropertyName: "packageQuantity"
+            },
+            {
+                name: "PackageIsMixed",
+                typeName: "bool",
+                targetPropertyName: "packageIsMixed"
+            },
+            {
+                name: "PackagePartId.PackageId",
+                typeName: "long",
+                targetPropertyName: "packagePartId.packageId"
+            },
+            {
+                name: "PackagePartId.PartId",
+                typeName: "long",
+                targetPropertyName: "packagePartId.partId"
             }]
     },
     {
@@ -2682,6 +4538,146 @@ export const AGGREGATES_METADATA = [
                 "name": "personDeleted",
                 "label": "Person Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Description",
+            typeName: "string",
+            targetPropertyName: "description"
+        },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "PersonBirthDate",
+                typeName: "DateTime",
+                targetPropertyName: "personBirthDate"
+            },
+            {
+                name: "PersonEmail",
+                typeName: "string",
+                targetPropertyName: "personEmail"
+            },
+            {
+                name: "PersonCreatedBy",
+                typeName: "string",
+                targetPropertyName: "personCreatedBy"
+            },
+            {
+                name: "PersonUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "personUpdatedBy"
+            },
+            {
+                name: "PersonVersion",
+                typeName: "long",
+                targetPropertyName: "personVersion"
+            },
+            {
+                name: "PersonCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "personCreatedAt"
+            },
+            {
+                name: "PersonUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "personUpdatedAt"
+            },
+            {
+                name: "PersonActive",
+                typeName: "bool",
+                targetPropertyName: "personActive"
+            },
+            {
+                name: "PersonDeleted",
+                typeName: "bool",
+                targetPropertyName: "personDeleted"
+            },
+            {
+                name: "YearPlanId.PersonalNameFirstName",
+                typeName: "string",
+                targetPropertyName: "yearPlanId.personalName.firstName"
+            },
+            {
+                name: "YearPlanId.PersonalNameLastName",
+                typeName: "string",
+                targetPropertyName: "yearPlanId.personalName.lastName"
+            },
+            {
+                name: "YearPlanId.Year",
+                typeName: "int",
+                targetPropertyName: "yearPlanId.year"
+            },
+            {
+                name: "PersonRefToEntInAnotherAggInst.PackageId",
+                typeName: "long",
+                targetPropertyName: "personRefToEntInAnotherAggInst.packageId"
+            },
+            {
+                name: "PersonRefToEntInAnotherAggInst.PartId",
+                typeName: "long",
+                targetPropertyName: "personRefToEntInAnotherAggInst.partId"
+            },
+            {
+                name: "PersonLoves.FirstName",
+                typeName: "string",
+                targetPropertyName: "personLoves.firstName"
+            },
+            {
+                name: "PersonLoves.LastName",
+                typeName: "string",
+                targetPropertyName: "personLoves.lastName"
+            },
+            {
+                name: "PersonEmergencyContact.PersonalNameFirstName",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.personalName.firstName"
+            },
+            {
+                name: "PersonEmergencyContact.PersonalNameLastName",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.personalName.lastName"
+            },
+            {
+                name: "PersonEmergencyContact.PhoneNumber",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.phoneNumber"
+            },
+            {
+                name: "PersonEmergencyContact.Address",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.address"
             }]
     },
     {
@@ -2833,6 +4829,191 @@ export const AGGREGATES_METADATA = [
                 "name": "personDeleted",
                 "label": "Person Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Description",
+            typeName: "string",
+            targetPropertyName: "description"
+        },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "YearPlanDescription",
+                typeName: "string",
+                targetPropertyName: "yearPlanDescription"
+            },
+            {
+                name: "YearPlanCreatedBy",
+                typeName: "string",
+                targetPropertyName: "yearPlanCreatedBy"
+            },
+            {
+                name: "YearPlanUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "yearPlanUpdatedBy"
+            },
+            {
+                name: "YearPlanVersion",
+                typeName: "long",
+                targetPropertyName: "yearPlanVersion"
+            },
+            {
+                name: "YearPlanCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "yearPlanCreatedAt"
+            },
+            {
+                name: "YearPlanUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "yearPlanUpdatedAt"
+            },
+            {
+                name: "YearPlanActive",
+                typeName: "bool",
+                targetPropertyName: "yearPlanActive"
+            },
+            {
+                name: "YearPlanDeleted",
+                typeName: "bool",
+                targetPropertyName: "yearPlanDeleted"
+            },
+            {
+                name: "PersonBirthDate",
+                typeName: "DateTime",
+                targetPropertyName: "personBirthDate"
+            },
+            {
+                name: "PersonEmail",
+                typeName: "string",
+                targetPropertyName: "personEmail"
+            },
+            {
+                name: "PersonCreatedBy",
+                typeName: "string",
+                targetPropertyName: "personCreatedBy"
+            },
+            {
+                name: "PersonUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "personUpdatedBy"
+            },
+            {
+                name: "PersonVersion",
+                typeName: "long",
+                targetPropertyName: "personVersion"
+            },
+            {
+                name: "PersonCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "personCreatedAt"
+            },
+            {
+                name: "PersonUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "personUpdatedAt"
+            },
+            {
+                name: "PersonActive",
+                typeName: "bool",
+                targetPropertyName: "personActive"
+            },
+            {
+                name: "PersonDeleted",
+                typeName: "bool",
+                targetPropertyName: "personDeleted"
+            },
+            {
+                name: "MonthPlanId.PersonalNameFirstName",
+                typeName: "string",
+                targetPropertyName: "monthPlanId.personalName.firstName"
+            },
+            {
+                name: "MonthPlanId.PersonalNameLastName",
+                typeName: "string",
+                targetPropertyName: "monthPlanId.personalName.lastName"
+            },
+            {
+                name: "MonthPlanId.Year",
+                typeName: "int",
+                targetPropertyName: "monthPlanId.year"
+            },
+            {
+                name: "MonthPlanId.Month",
+                typeName: "int",
+                targetPropertyName: "monthPlanId.month"
+            },
+            {
+                name: "PersonRefToEntInAnotherAggInst.PackageId",
+                typeName: "long",
+                targetPropertyName: "personRefToEntInAnotherAggInst.packageId"
+            },
+            {
+                name: "PersonRefToEntInAnotherAggInst.PartId",
+                typeName: "long",
+                targetPropertyName: "personRefToEntInAnotherAggInst.partId"
+            },
+            {
+                name: "PersonLoves.FirstName",
+                typeName: "string",
+                targetPropertyName: "personLoves.firstName"
+            },
+            {
+                name: "PersonLoves.LastName",
+                typeName: "string",
+                targetPropertyName: "personLoves.lastName"
+            },
+            {
+                name: "PersonEmergencyContact.PersonalNameFirstName",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.personalName.firstName"
+            },
+            {
+                name: "PersonEmergencyContact.PersonalNameLastName",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.personalName.lastName"
+            },
+            {
+                name: "PersonEmergencyContact.PhoneNumber",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.phoneNumber"
+            },
+            {
+                name: "PersonEmergencyContact.Address",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.address"
             }]
     },
     {
@@ -3024,6 +5205,236 @@ export const AGGREGATES_METADATA = [
                 "name": "personDeleted",
                 "label": "Person Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "Description",
+            typeName: "string",
+            targetPropertyName: "description"
+        },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "MonthPlanDescription",
+                typeName: "string",
+                targetPropertyName: "monthPlanDescription"
+            },
+            {
+                name: "MonthPlanCreatedBy",
+                typeName: "string",
+                targetPropertyName: "monthPlanCreatedBy"
+            },
+            {
+                name: "MonthPlanUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "monthPlanUpdatedBy"
+            },
+            {
+                name: "MonthPlanVersion",
+                typeName: "long",
+                targetPropertyName: "monthPlanVersion"
+            },
+            {
+                name: "MonthPlanCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "monthPlanCreatedAt"
+            },
+            {
+                name: "MonthPlanUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "monthPlanUpdatedAt"
+            },
+            {
+                name: "MonthPlanActive",
+                typeName: "bool",
+                targetPropertyName: "monthPlanActive"
+            },
+            {
+                name: "MonthPlanDeleted",
+                typeName: "bool",
+                targetPropertyName: "monthPlanDeleted"
+            },
+            {
+                name: "YearPlanDescription",
+                typeName: "string",
+                targetPropertyName: "yearPlanDescription"
+            },
+            {
+                name: "YearPlanCreatedBy",
+                typeName: "string",
+                targetPropertyName: "yearPlanCreatedBy"
+            },
+            {
+                name: "YearPlanUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "yearPlanUpdatedBy"
+            },
+            {
+                name: "YearPlanVersion",
+                typeName: "long",
+                targetPropertyName: "yearPlanVersion"
+            },
+            {
+                name: "YearPlanCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "yearPlanCreatedAt"
+            },
+            {
+                name: "YearPlanUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "yearPlanUpdatedAt"
+            },
+            {
+                name: "YearPlanActive",
+                typeName: "bool",
+                targetPropertyName: "yearPlanActive"
+            },
+            {
+                name: "YearPlanDeleted",
+                typeName: "bool",
+                targetPropertyName: "yearPlanDeleted"
+            },
+            {
+                name: "PersonBirthDate",
+                typeName: "DateTime",
+                targetPropertyName: "personBirthDate"
+            },
+            {
+                name: "PersonEmail",
+                typeName: "string",
+                targetPropertyName: "personEmail"
+            },
+            {
+                name: "PersonCreatedBy",
+                typeName: "string",
+                targetPropertyName: "personCreatedBy"
+            },
+            {
+                name: "PersonUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "personUpdatedBy"
+            },
+            {
+                name: "PersonVersion",
+                typeName: "long",
+                targetPropertyName: "personVersion"
+            },
+            {
+                name: "PersonCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "personCreatedAt"
+            },
+            {
+                name: "PersonUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "personUpdatedAt"
+            },
+            {
+                name: "PersonActive",
+                typeName: "bool",
+                targetPropertyName: "personActive"
+            },
+            {
+                name: "PersonDeleted",
+                typeName: "bool",
+                targetPropertyName: "personDeleted"
+            },
+            {
+                name: "DayPlanId.PersonalNameFirstName",
+                typeName: "string",
+                targetPropertyName: "dayPlanId.personalName.firstName"
+            },
+            {
+                name: "DayPlanId.PersonalNameLastName",
+                typeName: "string",
+                targetPropertyName: "dayPlanId.personalName.lastName"
+            },
+            {
+                name: "DayPlanId.Year",
+                typeName: "int",
+                targetPropertyName: "dayPlanId.year"
+            },
+            {
+                name: "DayPlanId.Month",
+                typeName: "int",
+                targetPropertyName: "dayPlanId.month"
+            },
+            {
+                name: "DayPlanId.Day",
+                typeName: "int",
+                targetPropertyName: "dayPlanId.day"
+            },
+            {
+                name: "PersonRefToEntInAnotherAggInst.PackageId",
+                typeName: "long",
+                targetPropertyName: "personRefToEntInAnotherAggInst.packageId"
+            },
+            {
+                name: "PersonRefToEntInAnotherAggInst.PartId",
+                typeName: "long",
+                targetPropertyName: "personRefToEntInAnotherAggInst.partId"
+            },
+            {
+                name: "PersonLoves.FirstName",
+                typeName: "string",
+                targetPropertyName: "personLoves.firstName"
+            },
+            {
+                name: "PersonLoves.LastName",
+                typeName: "string",
+                targetPropertyName: "personLoves.lastName"
+            },
+            {
+                name: "PersonEmergencyContact.PersonalNameFirstName",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.personalName.firstName"
+            },
+            {
+                name: "PersonEmergencyContact.PersonalNameLastName",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.personalName.lastName"
+            },
+            {
+                name: "PersonEmergencyContact.PhoneNumber",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.phoneNumber"
+            },
+            {
+                name: "PersonEmergencyContact.Address",
+                typeName: "string",
+                targetPropertyName: "personEmergencyContact.address"
             }]
     },
     {
@@ -3185,6 +5596,166 @@ export const AGGREGATES_METADATA = [
                 "name": "movementTransactionDeleted",
                 "label": "Movement Transaction Deleted",
                 "type": "bool"
+            }],
+        "filteringProperties": [{
+            name: "LocatorId",
+            typeName: "string",
+            targetPropertyName: "locatorId"
+        },
+            {
+                name: "ProductId",
+                typeName: "string",
+                targetPropertyName: "productId"
+            },
+            {
+                name: "Quantity",
+                typeName: "int",
+                targetPropertyName: "quantity"
+            },
+            {
+                name: "StorageQuantity",
+                typeName: "int",
+                targetPropertyName: "storageQuantity"
+            },
+            {
+                name: "TaskState",
+                typeName: "string",
+                targetPropertyName: "taskState"
+            },
+            {
+                name: "StorageVersion",
+                typeName: "long",
+                targetPropertyName: "storageVersion"
+            },
+            {
+                name: "TaskCommandId",
+                typeName: "string",
+                targetPropertyName: "taskCommandId"
+            },
+            {
+                name: "ErrorName",
+                typeName: "string",
+                targetPropertyName: "errorName"
+            },
+            {
+                name: "Version",
+                typeName: "long",
+                targetPropertyName: "version"
+            },
+            {
+                name: "CreatedBy",
+                typeName: "string",
+                targetPropertyName: "createdBy"
+            },
+            {
+                name: "CreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "createdAt"
+            },
+            {
+                name: "UpdatedBy",
+                typeName: "string",
+                targetPropertyName: "updatedBy"
+            },
+            {
+                name: "UpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "updatedAt"
+            },
+            {
+                name: "Active",
+                typeName: "bool",
+                targetPropertyName: "active"
+            },
+            {
+                name: "Deleted",
+                typeName: "bool",
+                targetPropertyName: "deleted"
+            },
+            {
+                name: "MovementTransactionSourceLocatorId",
+                typeName: "string",
+                targetPropertyName: "movementTransactionSourceLocatorId"
+            },
+            {
+                name: "MovementTransactionTargetLocatorId",
+                typeName: "string",
+                targetPropertyName: "movementTransactionTargetLocatorId"
+            },
+            {
+                name: "MovementTransactionProductId",
+                typeName: "string",
+                targetPropertyName: "movementTransactionProductId"
+            },
+            {
+                name: "MovementTransactionQuantity",
+                typeName: "int",
+                targetPropertyName: "movementTransactionQuantity"
+            },
+            {
+                name: "MovementTransactionIsInSameHouse",
+                typeName: "bool",
+                targetPropertyName: "movementTransactionIsInSameHouse"
+            },
+            {
+                name: "MovementTransactionProcessState",
+                typeName: "string",
+                targetPropertyName: "movementTransactionProcessState"
+            },
+            {
+                name: "MovementTransactionErrorName",
+                typeName: "string",
+                targetPropertyName: "movementTransactionErrorName"
+            },
+            {
+                name: "MovementTransactionMessage",
+                typeName: "string",
+                targetPropertyName: "movementTransactionMessage"
+            },
+            {
+                name: "MovementTransactionVersion",
+                typeName: "long",
+                targetPropertyName: "movementTransactionVersion"
+            },
+            {
+                name: "MovementTransactionCreatedBy",
+                typeName: "string",
+                targetPropertyName: "movementTransactionCreatedBy"
+            },
+            {
+                name: "MovementTransactionCreatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "movementTransactionCreatedAt"
+            },
+            {
+                name: "MovementTransactionUpdatedBy",
+                typeName: "string",
+                targetPropertyName: "movementTransactionUpdatedBy"
+            },
+            {
+                name: "MovementTransactionUpdatedAt",
+                typeName: "DateTime",
+                targetPropertyName: "movementTransactionUpdatedAt"
+            },
+            {
+                name: "MovementTransactionActive",
+                typeName: "bool",
+                targetPropertyName: "movementTransactionActive"
+            },
+            {
+                name: "MovementTransactionDeleted",
+                typeName: "bool",
+                targetPropertyName: "movementTransactionDeleted"
+            },
+            {
+                name: "MovementEntryId.MovementTransactionId",
+                typeName: "string",
+                targetPropertyName: "movementEntryId.movementTransactionId"
+            },
+            {
+                name: "MovementEntryId.EntryName",
+                typeName: "string",
+                targetPropertyName: "movementEntryId.entryName"
             }]
     }
 ]

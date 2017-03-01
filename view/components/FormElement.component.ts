@@ -1,5 +1,6 @@
 import * as Vue from 'vue';
 import searchWidget from '../components.unit/searchWidget/searchWidget';
+import {GLOBAL_CONFIG} from 'config/global/global-config.ts';
 
 export default Vue.extend({
     template: require('./views/FormElement.html'),
@@ -53,20 +54,22 @@ export default Vue.extend({
     },
     created() {
 
-        // 判断是否需要禁止输入
-        if (this.element.propertyType) {
-            if(this.element.propertyType.isEntityId &&
-               this.element.propertyType.httpPostCreationEnabled){
-                this.isDisableInput = true;
+        // 判断是否需要禁止输入(当且仅当全局配置允许POST方式创建时才生效)
+        if (GLOBAL_CONFIG.isEnablehttpPostCreation) {
+            if (this.element.propertyType) {
+                if (this.element.propertyType.isEntityId &&
+                    this.element.propertyType.httpPostCreationEnabled) {
+                    this.isDisableInput = true;
+                }
             }
         }
 
         /* 当 type 为 8, 也就是说属性是isSet, 此处进行数据格式转化 */
         let _element = [];
-        if(this.element.type === 8 ){
-            let _setObj = this.element.extData.values;
+        if (this.element.type === 8) {
+            let _setObj  = this.element.extData.values;
             let _setKeys = Object.keys(_setObj);
-            for(var key of _setKeys){
+            for (var key of _setKeys) {
                 _element.push({
                     label: key,
                     value: _setObj[key]
@@ -76,7 +79,7 @@ export default Vue.extend({
         }
 
         /* 当 type 为 4，设置开关的默认值为false */
-        if(this.element.type === 4){
+        if (this.element.type === 4) {
             this.element.value = false;
         }
     }

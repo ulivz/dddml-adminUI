@@ -144,6 +144,15 @@ export const VALUE_OBJECT_METADATA = [
     ]
   },
   {
+    "name": "ContextStateEventId",
+    "plural": "ContextStateEventIds",
+    "label": "Context State Event Id",
+    "collectionLabel": "Context State Event Ids",
+    "properties": [
+      { name: "contextId", label: "Context Id", type: "string" }, { name: "version", label: "Version", type: "long" }
+    ]
+  },
+  {
     "name": "TermTagId",
     "plural": "TermTagIds",
     "label": "Term Tag Id",

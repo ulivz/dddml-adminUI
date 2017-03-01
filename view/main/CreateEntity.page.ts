@@ -6,6 +6,8 @@ import Entity from "src/Dddml/Domain/Entity";
 import FormModelFactory from "src/Dddml/ModelFactory/Form/FormModelFactory";
 import NavigatorModelFactory from "src/Dddml/ModelFactory/Navigator/NavigatorModelFactory";
 import Alert from 'components/Alert.component';
+import {GLOBAL_CONFIG} from 'config/global/global-config.ts';
+
 
 let _entity: Entity;
 
@@ -84,13 +86,14 @@ export default Vue.extend({
                 id: null
             },]));
 
-            this.httpPostCreationEnabled =  _entity.httpPostCreationEnabled
+            // 判断是否开启POST新建功能
+            if (GLOBAL_CONFIG.isEnablehttpPostCreation) {
+                this.httpPostCreationEnabled = _entity.httpPostCreationEnabled
 
-            if (this.httpPostCreationEnabled) {
-                console.info(`当前实体${_entity.name}将采用 POST 方式创建`);
+                if (this.httpPostCreationEnabled) {
+                    console.info(`当前实体${_entity.name}将采用 POST 方式创建`);
+                }
             }
-
-            console.info(_entity);
 
             this.title = '新建 ' + _entity.name;
 
