@@ -6,5 +6,7 @@ interface EntityMetadataInterface {
     httpPostCreationEnabled?: boolean;
     id: PropertyMetadataInterface;
     properties: PropertyMetadataInterface[];
+    filteringProperties?: FilteringPropertyInterface[];
     entities?: EntityMetadataInterface[];
 }
+

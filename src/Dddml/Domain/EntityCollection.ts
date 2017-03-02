@@ -7,21 +7,25 @@ import ValueObject from "./ValueObject";
 
 export default class EntityCollection {
     private data: EntityInterface[];
-    private metadata: EntityMetadata;
+    private _metadata: EntityMetadata;
     private _hierarchies: EntityHierarchies;
 
     private _navName: string
 
+    get metadata() {
+        return this._metadata;
+    }
+
     get name() {
-        return this.metadata.plural;
+        return this._metadata.plural;
     }
 
     get entityName() {
-        return this.metadata.name;
+        return this._metadata.name;
     }
 
     get label() {
-        return this.metadata.collectionLabel;
+        return this._metadata.collectionLabel;
     }
 
     get hierarchies(): EntityHierarchies {
@@ -56,7 +60,7 @@ export default class EntityCollection {
         let path: string[] = hierarchies ? hierarchies.metadataPath : [];
         path.push(_.upperFirst(name));
 
-        this.metadata = AggregatesMetadata
+        this._metadata = AggregatesMetadata
             .getInstance()
             .getMetadataByHierarchies(path);
 
@@ -105,15 +109,15 @@ export default class EntityCollection {
         let entities = [];
 
         for (let entity of this.data) {
-            let id = entity[this.metadata.id.name];
+            let id = entity[this._metadata.id.name];
 
             if (_.isObject(id)) {
-                id = new ValueObject(this.metadata.id.type, id);
+                id = new ValueObject(this._metadata.id.type, id);
                 id = id.toString();
             }
 
             let hierarchies = this.hierarchies.concat([{
-                name: this.metadata.plural,
+                name: this._metadata.plural,
                 id: id
             }]);
 

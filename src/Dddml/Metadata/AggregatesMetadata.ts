@@ -1,4 +1,4 @@
-import { AGGREGATES_METADATA } from '../../../metadata/aggregates';
+import {AGGREGATES_METADATA} from '../../../metadata/aggregates';
 import EntityMetadata from "./EntityMetadata";
 import EntityMetadataCollection from "./EntityMetadataCollection";
 
@@ -25,7 +25,7 @@ export default class AggregatesMetadata extends EntityMetadataCollection {
      * @param entityCollection {String} 实体集合
      * @return {any}
      */
-    static recurseMetadata(name:string, entityCollection) {
+    static recurseMetadata(name: string, entityCollection) {
 
         let result;
 
@@ -66,14 +66,15 @@ export default class AggregatesMetadata extends EntityMetadataCollection {
 
     static getObjectNamePluralMap() {
 
-        if(!AggregatesMetadata.ObjectNamePluralMap){
+        if (!AggregatesMetadata.ObjectNamePluralMap) {
 
             let map = [];
+
             function recurse(collection) {
-                for(let entity of collection){
+                for (let entity of collection) {
                     map[entity.name] = entity.plural
 
-                    if(entity.entities){
+                    if (entity.entities) {
                         recurse(entity.entities)
                     }
                 }

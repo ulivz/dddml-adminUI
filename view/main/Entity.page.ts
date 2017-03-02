@@ -44,8 +44,6 @@ export default Vue.extend({
                 this.entityTableData = DetailModelFactory.create(entity);
                 console.log(this.entityTableData);
 
-
-
                 // 子实体
                 let entities = entity.entities();
                 this.subEntityTableData = TablesModelFactory.create(<EntityCollection[]>entities);

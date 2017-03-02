@@ -24,6 +24,10 @@ export default class EntityMetadata {
         return this._entity.collectionLabel;
     }
 
+    get filteringProperties() {
+        return this._entity.filteringProperties;
+    }
+
     get httpPostCreationEnabled() {
         if (this._entity.httpPostCreationEnabled) {
             return this._entity.httpPostCreationEnabled;

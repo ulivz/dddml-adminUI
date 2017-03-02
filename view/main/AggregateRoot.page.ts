@@ -6,6 +6,10 @@ import * as Vue from 'vue'
 import EntityCollection from "src/Dddml/Domain/EntityCollection";
 import TableModelFactory from "src/Dddml/ModelFactory/Table/TableModelFactory";
 import NavigatorModelFactory from "src/Dddml/ModelFactory/Navigator/NavigatorModelFactory";
+import FilterProperties from '../../src/Dddml/Filter/Model/FilterProperties.ts';
+import FilterProperty from 'src/Dddml/Filter/Model/FilterProperty.ts';
+import * as btnMeauConfig from 'view/components.unit/btnMeau/btnMeauConfig.ts';
+import FilterViewDataFactory from 'src/Dddml/Filter/View/FilterViewDataFactory.ts';
 
 export default Vue.extend({
     template: require('./views/AggregateRoot.html'),
@@ -16,6 +20,14 @@ export default Vue.extend({
             navigator: null,
             showError: false,
             errorMessage: "",
+            isFilterModalShow: false,
+            filterModel: null,
+            filterPropertiesSelect: null,
+            filterPropertiesSelectValue: "",
+            filterCriteria: [],
+            filterUiBetweenStyle: {
+                width: '100px'
+            }
         }
     },
     components: {
@@ -30,20 +42,37 @@ export default Vue.extend({
         }
     },
     methods: {
-        filterList() {
-            console.info('enter');
+        openFilterModal() {
+            this.isFilterModalShow = true;
+        },
+        closeFilterModal() {
+            this.isFilterModalShow = false;
+        },
+        filterPropertiesSelectChange(value) {
+            this.filterPropertiesSelectValue = value;
+        },
+        createFilterCriteria() {
+            // console.log(_.find(this.filterModel.filterProperties, ['name', this.filterPropertiesSelectValue]))
+            this.filterCriteria.push(
+                FilterViewDataFactory.createCriterion(
+                    <FilterProperty>_.find(this.filterModel.filterProperties, ['name', this.filterPropertiesSelectValue])
+                )
+            )
+        },
+        criterionChange(criterion, valueArray) {
+            criterion.Type = valueArray[0];
+            console.log(criterion);
         }
     },
     route: {
         data() {
-            // console.info('AggregateRoot.page');
-            // console.log(this.$route);
+
             // 获得实体的name
             let entityCollectionName = this.$route.params.name;
 
             this.$http.get(entityCollectionName).then((response) => {
 
-                let entityCollection = EntityCollection.create(
+                let entityCollection = <EntityCollection>EntityCollection.create(
                     entityCollectionName,
                     null,
                     response.data
@@ -53,31 +82,36 @@ export default Vue.extend({
 
                 let btnMeau = [];
 
-                btnMeau[0] = {
-                    styleClasses: 'btn btn-warning',
-                    btnType: 1,
-                    label: '创建',
-                    icon: 'fa-pencil',
-                    link: {
-                        name: 'createEntity',
-                        params: {
-                            name: entityCollection.name,
-                        }
-                    }
-                };
+                // 新建按钮
+                let createBtn = btnMeauConfig.CREATE_BTN;
+                createBtn.link.name = 'createEntity';
+                createBtn.link.params.name = entityCollection.name;
+                btnMeau.push(createBtn);
 
                 let self = this;
 
-                btnMeau[1] = {
-                    btnType: 2,
-                    icon: 'fa-filter',
-                    styleClasses: 'btn btn-success',
-                    label: '过滤',
-                    method: self.filterList
-                };
+                this.filterModel = new FilterProperties(entityCollection.metadata);
+                console.log(this.filterModel);
+
+                if (this.filterModel.lookupFilesInConfig) {
+
+                    this.filterCriteria = FilterViewDataFactory.createDefault(
+                        this.filterModel.filterProperties
+                    )
+
+                    this.filterPropertiesSelect = FilterViewDataFactory.createPropertiesSelect(
+                        this.filterModel.filterProperties
+                    )
+
+                    // 过滤按钮
+                    let filterBtn = btnMeauConfig.FILTER_BTN;
+                    filterBtn.method = self.openFilterModal;
+                    btnMeau.push(filterBtn);
+
+                }
+
 
                 this.btnMeau = btnMeau;
-                console.log(this.btnMeau);
 
                 this.navigator = NavigatorModelFactory
                     .createEntities(this.$route.params.name);
@@ -93,7 +127,7 @@ export default Vue.extend({
         this.$watch('$route.params.name', function () {
             this.table        = null;
             this.navigator    = null;
-            this.btnMeau    = null;
+            this.btnMeau      = null;
             this.showError    = false;
             this.errorMessage = '';
         })
