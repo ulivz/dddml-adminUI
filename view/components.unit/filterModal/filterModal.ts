@@ -6,11 +6,25 @@ export default Vue.extend({
     template: require('./filterModal.html'),
     data() {
       return {
+          isErrorModalShow: false
       }
+    },
+    computed: {
+
+    },
+    watch: {
+        filterPropertiesSelectValue(curVal, oldVal) {
+            console.log('2')
+            if (this.filterPropertiesSelectValue) {
+                this.isErrorModalShow = false
+            }
+        }
     },
     methods: {
         // 可供选择的过滤条件的选择值改变
         filterPropertiesSelectChange(value) {
+            console.log('3');
+            console.log(this);
             this.filterPropertiesSelectValue = value;
         },
         filterModalCancel() {
@@ -18,12 +32,18 @@ export default Vue.extend({
         },
         // 新建一个过滤条件
         createFilterCriterion() {
-            this.filterCriteria.push(
-                FilterViewDataFactory.createCriterion(
-                    <FilterProperty>_.find(this.filterProperties,
-                        ['name', this.filterPropertiesSelectValue])
+            if (this.filterPropertiesSelectValue) {
+                this.isErrorModalShow = false;
+                this.filterCriteria.push(
+                    FilterViewDataFactory.createCriterion(
+                        <FilterProperty>_.find(this.filterProperties,
+                            ['name', this.filterPropertiesSelectValue])
+                    )
                 )
-            )
+            } else {
+                console.log('1');
+                this.isErrorModalShow = true;
+            }
         },
         // 单个条件的选择值改变
         criterionChange(criterion, valueArray) {
