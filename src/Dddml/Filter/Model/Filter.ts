@@ -50,7 +50,7 @@ export default class Filter {
 
     public addLike(property: string, value: string) {
         this.Criteria.push({
-            Type: 'le',
+            Type: 'like',
             Property: property,
             Value: `%${value}%`
         })

@@ -2,14 +2,15 @@ import VTable from 'components/Table';
 import Navigator from 'components/Navigator.component';
 import Alert from 'components/Alert.component';
 import meauBtn from 'view/components.unit/btnMeau/btnMeau.ts';
+import filterModal from 'view/components.unit/filterModal/filterModal.ts';
 import * as Vue from 'vue'
 import EntityCollection from "src/Dddml/Domain/EntityCollection";
 import TableModelFactory from "src/Dddml/ModelFactory/Table/TableModelFactory";
 import NavigatorModelFactory from "src/Dddml/ModelFactory/Navigator/NavigatorModelFactory";
 import FilterProperties from '../../src/Dddml/Filter/Model/FilterProperties.ts';
-import FilterProperty from 'src/Dddml/Filter/Model/FilterProperty.ts';
 import * as btnMeauConfig from 'view/components.unit/btnMeau/btnMeauConfig.ts';
 import FilterViewDataFactory from 'src/Dddml/Filter/View/FilterViewDataFactory.ts';
+import camelCase = require("lodash/camelCase");
 
 export default Vue.extend({
     template: require('./views/AggregateRoot.html'),
@@ -23,18 +24,15 @@ export default Vue.extend({
             isFilterModalShow: false,
             filterModel: null,
             filterPropertiesSelect: null,
-            filterPropertiesSelectValue: "",
             filterCriteria: [],
-            filterUiBetweenStyle: {
-                width: '100px'
-            }
         }
     },
     components: {
         VTable,
         Navigator,
         Alert,
-        meauBtn
+        meauBtn,
+        filterModal
     },
     computed: {
         title(){
@@ -45,23 +43,8 @@ export default Vue.extend({
         openFilterModal() {
             this.isFilterModalShow = true;
         },
-        closeFilterModal() {
-            this.isFilterModalShow = false;
-        },
-        filterPropertiesSelectChange(value) {
-            this.filterPropertiesSelectValue = value;
-        },
-        createFilterCriteria() {
-            // console.log(_.find(this.filterModel.filterProperties, ['name', this.filterPropertiesSelectValue]))
-            this.filterCriteria.push(
-                FilterViewDataFactory.createCriterion(
-                    <FilterProperty>_.find(this.filterModel.filterProperties, ['name', this.filterPropertiesSelectValue])
-                )
-            )
-        },
-        criterionChange(criterion, valueArray) {
-            criterion.Type = valueArray[0];
-            console.log(criterion);
+        filterChooseOk(val) {
+            console.log(val);
         }
     },
     route: {
@@ -102,6 +85,7 @@ export default Vue.extend({
                     this.filterPropertiesSelect = FilterViewDataFactory.createPropertiesSelect(
                         this.filterModel.filterProperties
                     )
+                    console.log(this.filterPropertiesSelect)
 
                     // 过滤按钮
                     let filterBtn = btnMeauConfig.FILTER_BTN;
@@ -115,7 +99,6 @@ export default Vue.extend({
 
                 this.navigator = NavigatorModelFactory
                     .createEntities(this.$route.params.name);
-
 
             }, (response) => {
                 this.showError    = true;

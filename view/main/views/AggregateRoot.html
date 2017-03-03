@@ -29,59 +29,13 @@
         </div>
     </section>
 
-    <v-modal title="请输入过滤条件" :visible="isFilterModalShow" :on-ok="closeFilterModal"
-             :on-cancel="closeFilterModal" ok-text="OK" cancel-text="Cancel">
-
-        <div style="padding-left: 30px">
-
-            <div>
-                <v-select placeholder="全部条件" style="width: 100px;" :options="filterPropertiesSelect"
-                          @change="filterPropertiesSelectChange"></v-select>
-                <v-button type="success" @click="createFilterCriteria">新增</v-button>
-            </div>
-
-            <div v-for="(index, criterion) in filterCriteria" style="margin: 7px 0">
-
-                <v-input :value="criterion.Property.label" style="width:100px;pointer-events: none;display:inline-block"></v-input>
-
-                <v-select placeholder="过滤条件" style="width: 120px;"
-                          :value="criterion.Type"
-                          @change="criterionChange(criterion, $arguments)"
-                          :options="criterion.Select"></v-select>
-
-                <span v-if="criterion.Type === 'isNull' ">
-                    <v-input placeholder="isNull" style="width:200px;display:inline-block" disabled=""></v-input>
-                </span>
-
-                <span v-if="criterion.Type === 'between' ">
-                    <v-datepicker :style="filterUiBetweenStyle" placeholder="开始日期"></v-datepicker>
-                    <v-datepicker :style="filterUiBetweenStyle" placeholder="结束日期"></v-datepicker>
-                </span>
-
-                <span v-if="criterion.Type === 'eq' ">
-                    <v-input placeholder="请输入值" style="width:200px;display:inline-block"></v-input>
-                </span>
-
-                <span v-if="criterion.Type === 'ge' ">
-                    <v-datepicker></v-datepicker>
-                </span>
-
-                <span v-if="criterion.Type === 'le' ">
-                    <v-datepicker></v-datepicker>
-                </span>
-
-                <span v-if="criterion.Type === 'like' ">
-                    <v-input placeholder="请输入值" style="width:200px;display:inline-block"></v-input>
-                </span>
-
-                <v-icon @click="filterCriteria.splice(index, 1)" style="color: #f00; font-size: 18px"
-                        type="minus-circle"></v-icon>
-
-            </div>
-
-        </div>
-
-    </v-modal>
-
+    <!-- 过滤弹窗 -->
+    <filter-modal v-if="filterModel"
+                  @filter-choose-ok="filterChooseOk"
+                  :filter-properties="filterModel.filterProperties"
+                  :is-filter-modal-show.sync="isFilterModalShow"
+                  :filter-properties-select.sync="filterPropertiesSelect"
+                  :filter-criteria.sync="filterCriteria">
+    </filter-modal>
 
 </div>

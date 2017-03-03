@@ -5,3 +5,4 @@
 /// <reference path="globals/vue/index.d.ts" />
 /// <reference path="globals/uuid-lib/index.d.ts" />
 /// <reference path="globals/vue-beauty/index.d.ts" />
+/// <reference path="globals/iview/index.d.ts" />

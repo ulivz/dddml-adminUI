@@ -5,6 +5,8 @@ import routes from '../routes';
 import { GLOBAL_CONFIG } from 'config/global/global-config';
 import * as VueResource from 'vue-resource';
 import * as vueBeauty from 'vue-beauty';
+import * as iView from 'iview';
+import 'iview/dist/styles/iview.css';    // 使用 CSS
 
 export default class Application {
     protected static instance: Application;
@@ -32,6 +34,7 @@ export default class Application {
 
         Vue.use(VueRouter);
         Vue.use(vueBeauty);
+        Vue.use(iView);
     }
 
     /**

@@ -1,27 +1,29 @@
-.has-error .select2-selection{
+.has-error .select2-selection {
     border-color: #dd4b39;
 }
-.table{
+
+.table {
     cursor: pointer;
 }
+
 html, body {
     font-family: "Microsoft YaHei UI";
     font-weight: 500;
 }
 
-.admin-card{
+.admin-card {
     margin-bottom: 20px;
 }
 
-.admin-sep{
+.admin-sep {
     height: 30px
 }
 
-.admin-title{
+.admin-title {
     margin-bottom: 3px;
 }
 
-.admin-sep-20{
+.admin-sep-20 {
     margin-bottom: 20px;
 }
 
@@ -33,8 +35,7 @@ html, body {
     display: inline-block;
 }
 
-
-.ant-modal{
+.ant-modal {
     width: 1000px;
 }
 
@@ -44,13 +45,12 @@ table {
     width: 100%;
 }
 
-.isui-table-wrapper{
+.isui-table-wrapper {
     max-height: 300px;
     min-height: 300px;
     max-width: 1000px;
     overflow: scroll;
 }
-
 
 .isui-table {
     /*border: solid #d5d5d5 1px;*/
@@ -81,11 +81,11 @@ table {
 
 .isui-table th {
     background-color: #f5f5f5;
-    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
-    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
-    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
     border-top: none;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
 .isui-table td:first-child, .isui-table th:first-child {
@@ -104,7 +104,7 @@ table {
     border-radius: 0 6px 0 0;
 }
 
-.isui-table th:only-child{
+.isui-table th:only-child {
     -moz-border-radius: 6px 6px 0 0;
     -webkit-border-radius: 6px 6px 0 0;
     border-radius: 6px 6px 0 0;
@@ -122,29 +122,40 @@ table {
     border-radius: 0 0 6px 0;
 }
 
-
-.isui-pagination-wrapper{
+.isui-pagination-wrapper {
     padding: 20px;
     text-align: center;
 }
 
-.isui-pagination{
+.isui-pagination {
     display: inline-block;
 }
 
-.form-control{
+.form-control {
     border-radius: 3px;
 }
 
 /*.sidebar-menu{*/
-    /*overflow-y: scroll;*/
+/*overflow-y: scroll;*/
 /*}*/
 
 /*.main-sidebar {*/
-    /*position: fixed;*/
+/*position: fixed;*/
 /*}*/
 
 /*.main-header {*/
-    /*position: absolute;*/
-    /*top:0*/
+/*position: absolute;*/
+/*top:0*/
 /*}*/
+
+/* AggregateRoot.page
+   ========================================================================== */
+.filter-property {
+    width: 100px;
+    pointer-events: none;
+    display: inline-block
+}
+
+.filter-input-default {
+
+}
