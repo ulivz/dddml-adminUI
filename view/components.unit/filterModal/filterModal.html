@@ -12,7 +12,8 @@
                       @change="filterPropertiesSelectChange"></v-select>
             <v-button style="height: 32px; margin-right: 5px"
                       type="success"
-                      @click="createFilterCriterion">新增</v-button>
+                      @click="createFilterCriterion">新增
+            </v-button>
             <span>
                <v-alert v-if="isErrorModalShow"
                         style="display: inline-block; width: 250px; height: 32px; margin-bottom: 0" type="error"
@@ -20,7 +21,24 @@
             </span>
         </div>
 
-        <div v-for="(index, criterion) in filterCriteria" style="margin: 7px 0">
+        <div v-for="(index, criterion) in filterCriteria" style="\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         rgin: 7px 0">
             <i-input :value.sync="criterion.Property.label"
                      style="margin-right: 5px; width: 100px;display: inline-block;pointer-events: none;"></i-input>
 

@@ -36,7 +36,7 @@ export default Vue.extend({
                 this.isErrorModalShow = false;
                 this.filterCriteria.push(
                     FilterViewDataFactory.createCriterion(
-                        <FilterProperty>_.find(this.filterProperties,
+                           <FilterProperty>_.find(this.filterProperties,
                             ['name', this.filterPropertiesSelectValue])
                     )
                 )

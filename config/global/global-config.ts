@@ -4,7 +4,7 @@ export const GLOBAL_CONFIG = {
     // "appClient.baseUrl": 'http://15u8032v36.iok.la/api',
     'appClient.baseUrl': 'http://localhost:36677/api',
 
-    'isEnablehttpPostCreation': true,
+    'isEnablehttpPostCreation': false,
 
     // 是否显示UIPage
     "isShowUiPage": false,

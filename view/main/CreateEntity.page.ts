@@ -36,6 +36,7 @@ export default Vue.extend({
         submit(form){
 
             let jsonData = form.data;
+            console.log(jsonData);
 
             let hierarchies = new EntityHierarchies([{
                 name: this.$route.params.name,
