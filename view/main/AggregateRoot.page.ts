@@ -46,20 +46,23 @@ export default Vue.extend({
         },
         filterChooseOk(val) {
 
-            let self = this;
+            this.$http.get(this.entityCollectionName,
+                {
+                    params: {
+                        filter: JSON.stringify(val)
+                    }
+                }
+            )
+                .then((response) => {
+                    let entityCollection = <EntityCollection>EntityCollection.create(
+                        this.entityCollectionName,
+                        null,
+                        response.data
+                    );
 
-            console.log(val);
+                    this.table = TableModelFactory.create(entityCollection);
 
-            this.$http.get(`${self.entityCollectionName}?filter=` + val).then((response) => {
-                let entityCollection = <EntityCollection>EntityCollection.create(
-                    self.entityCollectionName,
-                    null,
-                    response.data
-                );
-
-                self.table = TableModelFactory.create(entityCollection);
-
-            })
+                })
 
         }
     },
@@ -120,17 +123,17 @@ export default Vue.extend({
                     .createEntities(this.$route.params.name);
 
             }, (response) => {
-                this.showError    = true;
+                this.showError = true;
                 this.errorMessage = response.statusText;
             });
         }
     },
     ready(){
         this.$watch('$route.params.name', function () {
-            this.table        = null;
-            this.navigator    = null;
-            this.btnMeau      = null;
-            this.showError    = false;
+            this.table = null;
+            this.navigator = null;
+            this.btnMeau = null;
+            this.showError = false;
             this.errorMessage = '';
         })
     }

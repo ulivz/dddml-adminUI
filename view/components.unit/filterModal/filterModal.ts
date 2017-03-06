@@ -34,9 +34,9 @@ export default Vue.extend({
             if(FilterViewDataFactory.check(this.filterCriteria)){
                 this.isPreventOkMsgHide = true;
                 // trigger a event with filter JSON data
-                this.$emit('filter-choose-ok', JSON.stringify(FilterViewDataFactory.parse(
+                this.$emit('filter-choose-ok', FilterViewDataFactory.parse(
                     this.filterCriteria
-                )))
+                ))
                 // close the filter modal
                 this.isFilterModalShow = false;
             } else {
