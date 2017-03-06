@@ -29,7 +29,7 @@ export default class FilterProperties {
     }
 
     // get filterProperties in metedata
-    get filterProperties() {
+    get properties() {
 
         let metadata = this._entityMetadata;
         let _filterProperties = [];

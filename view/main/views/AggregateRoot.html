@@ -30,9 +30,9 @@
     </section>
 
     <!-- 过滤弹窗 -->
-    <filter-modal v-if="filterProperties"
+    <filter-modal v-if="filterProperties &&　filterProperties.lookupFilesInConfig"
                   @filter-choose-ok="filterChooseOk"
-                  :filter-properties="filterProperties.filterProperties"
+                  :filter-properties="filterProperties.properties"
                   :is-filter-modal-show.sync="isFilterModalShow"
                   :filter-properties-select.sync="filterPropertiesSelect"
                   :filter-criteria.sync="filterCriteria">

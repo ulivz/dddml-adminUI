@@ -1,7 +1,5 @@
 <Modal :visible.sync="isFilterModalShow"
        title="请输入过滤条件"
-       @on-ok="filterModalOk"
-       @on-cancel="filterModalCancel"
        width="800">
 
     <p slot="header" style="color:#f60;text-align:center">
@@ -21,9 +19,10 @@
                       @click="createFilterCriterion">新增
             </v-button>
             <span>
-               <v-alert v-if="isAddConditionMsgShow"
+            <v-alert v-if="isAddConditionMsgShow"
                         style="display: inline-block; width: 250px; height: 32px; margin-bottom: 0" type="error"
-                        :show-icon="true" message="请先选择条件后再新建"></v-alert>
+                        :show-icon="true" message="请先选择条件后再新建">
+            </v-alert>
             </span>
         </div>
 
@@ -69,7 +68,7 @@
                              style="width: 200px;display: inline-block"></i-input>
             </span>
 
-            <v-icon v-if="filterCriteria.isMandatory"
+            <v-icon v-if="!criterion.isMandatory || index >= initFilterViewDataLength "
                     @click="filterCriteria.splice(index, 1)" style="color: #f00; font-size: 18px; margin-left: 5px"
                     type="minus-circle"></v-icon>
         </div>
@@ -83,8 +82,8 @@
     </div>
 
     <div slot="footer">
-            <i-button type="text" size="large" @click="cancel">Cancel</i-button>
-            <i-button type="primary" size="large" :loading="buttonLoading" @click="ok">Ok</i-button>
+        <i-button type="text" size="large" @click="cancel">Cancel</i-button>
+        <i-button type="primary" size="large" :loading="buttonLoading" @click="ok">Ok</i-button>
     </div>
 
 </Modal>

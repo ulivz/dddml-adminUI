@@ -2,14 +2,15 @@ import * as Vue from 'vue';
 import FilterProperty from 'src/Dddml/Filter/Model/FilterProperty.ts';
 import FilterViewDataFactory from 'src/Dddml/Filter/View/FilterViewDataFactory.ts';
 import {FilterViewDataInterface} from 'src/Dddml/Filter/View/FilterViewDataInterface.ts';
-import camelCase = require("lodash/camelCase");
+import * as _ from 'lodash';
 
 export default Vue.extend({
     template: require('./filterModal.html'),
     data() {
       return {
           isAddConditionMsgShow: false,
-          isPreventOkMsgHide: true
+          isPreventOkMsgHide: true,
+          initFilterViewDataLength: null
       }
     },
     watch: {
@@ -35,7 +36,7 @@ export default Vue.extend({
                 // trigger a event with filter JSON data
                 this.$emit('filter-choose-ok', JSON.stringify(FilterViewDataFactory.parse(
                     this.filterCriteria
-                ), null, 2))
+                )))
                 // close the filter modal
                 this.isFilterModalShow = false;
             } else {
@@ -45,6 +46,9 @@ export default Vue.extend({
         },
         // create a new criterion
         createFilterCriterion() {
+
+            console.log(this.filterProperties);
+
             if (this.filterPropertiesSelectValue) {
                 this.isAddConditionMsgShow = false;
                 this.filterCriteria.push(
@@ -86,5 +90,9 @@ export default Vue.extend({
             type: Array,
             twoWay: true
         }
+    },
+    created() {
+        console.log(this.filterCriteria);
+        this.initFilterViewDataLength = this.filterCriteria.length;
     }
 });

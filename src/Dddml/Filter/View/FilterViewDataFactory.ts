@@ -103,7 +103,6 @@ export default class FilterViewDataFactory {
     }
 
 
-
     // generate the default data for view
     static createDefault(filterProperties: FilterProperty[]): FilterViewDataInterface[] {
 

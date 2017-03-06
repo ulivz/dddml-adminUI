@@ -21,6 +21,7 @@ export default Vue.extend({
             navigator: null,
             showError: false,
             errorMessage: "",
+            entityCollectionName: '',
             isFilterModalShow: false,
             filterProperties: null,
             filterPropertiesSelect: null,
@@ -44,7 +45,22 @@ export default Vue.extend({
             this.isFilterModalShow = true;
         },
         filterChooseOk(val) {
+
+            let self = this;
+
             console.log(val);
+
+            this.$http.get(`${self.entityCollectionName}?filter=` + val).then((response) => {
+                let entityCollection = <EntityCollection>EntityCollection.create(
+                    self.entityCollectionName,
+                    null,
+                    response.data
+                );
+
+                self.table = TableModelFactory.create(entityCollection);
+
+            })
+
         }
     },
     route: {
@@ -52,6 +68,7 @@ export default Vue.extend({
 
             // get the entity's name
             let entityCollectionName = this.$route.params.name;
+            this.entityCollectionName = entityCollectionName;
 
             this.$http.get(entityCollectionName).then((response) => {
 
@@ -83,11 +100,11 @@ export default Vue.extend({
                 if (this.filterProperties.lookupFilesInConfig) {
 
                     this.filterCriteria = FilterViewDataFactory.createDefault(
-                        this.filterProperties.filterProperties
+                        this.filterProperties.properties
                     )
 
                     this.filterPropertiesSelect = FilterViewDataFactory.createPropertiesSelect(
-                        this.filterProperties.filterProperties
+                        this.filterProperties.properties
                     )
 
                     // "filter" button

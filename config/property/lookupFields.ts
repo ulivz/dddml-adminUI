@@ -5,15 +5,7 @@ export const LOOKUP_FIELDS = [
             {
                 "name": 'ContextId',
                 "isMandatory": true
-            },
-            {
-                "name": 'Expression',
-                "isMandatory": true
-            },
-            {
-                "name": 'TermId',
-                "isMandatory": true
-            },
+            }
         ]
     },
     {
