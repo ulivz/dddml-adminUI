@@ -29,6 +29,13 @@ export default Vue.extend({
         cancel() {
             this.isFilterModalShow = false;
         },
+        // trigger a 'filter-clear' event...
+        // to let parent commponent to revert to the page that are no filter
+        clear() {
+            this.$emit('filter-clear');
+            // close the filter modal
+            this.isFilterModalShow = false;
+        },
         // click the ok button
         ok() {
             if(FilterViewDataFactory.check(this.filterCriteria)){

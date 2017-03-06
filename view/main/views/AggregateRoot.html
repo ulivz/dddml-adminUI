@@ -31,6 +31,7 @@
 
     <!-- 过滤弹窗 -->
     <filter-modal v-if="filterProperties &&　filterProperties.lookupFilesInConfig"
+                  @filter-clear="filterClear"
                   @filter-choose-ok="filterChooseOk"
                   :filter-properties="filterProperties.properties"
                   :is-filter-modal-show.sync="isFilterModalShow"

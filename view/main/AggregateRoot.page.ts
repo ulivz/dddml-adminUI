@@ -44,6 +44,21 @@ export default Vue.extend({
         openFilterModal() {
             this.isFilterModalShow = true;
         },
+        filterClear() {
+
+            this.$http.get(this.entityCollectionName)
+                .then((response) => {
+                    let entityCollection = <EntityCollection>EntityCollection.create(
+                        this.entityCollectionName,
+                        null,
+                        response.data
+                    );
+
+                    this.table = TableModelFactory.create(entityCollection);
+
+                })
+
+        },
         filterChooseOk(val) {
 
             this.$http.get(this.entityCollectionName,

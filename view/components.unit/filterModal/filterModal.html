@@ -83,6 +83,7 @@
 
     <div slot="footer">
         <i-button type="text" size="large" @click="cancel">Cancel</i-button>
+        <i-button type="error" size="large" :loading="buttonLoading" @click="clear">Clear Filter</i-button>
         <i-button type="primary" size="large" :loading="buttonLoading" @click="ok">Ok</i-button>
     </div>
 
