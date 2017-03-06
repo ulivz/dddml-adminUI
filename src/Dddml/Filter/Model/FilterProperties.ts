@@ -1,20 +1,18 @@
 import EntityMetadata from "../../Metadata/EntityMetadata.ts";
 import FilterProperty from './FilterProperty.ts';
 import {LOOKUP_FIELDS} from '../../../../config/property/lookupFields.ts';
+import {LookupFieldInterface} from 'src/Dddml/Filter/Model/FilterInterface.ts';
 
 export default class FilterProperties {
 
-    // private _lookupFields: LookupFieldsInterface[];
     private _entityMetadata: EntityMetadata;
 
     constructor(entityMetadata: EntityMetadata) {
-
-        // this._lookupFields = lookupFields;
         this._entityMetadata = entityMetadata;
 
     }
 
-    // 读取配置中的 lookupFiles
+    // get the lookupFiles in configuration
     get lookupFilesInConfig() {
 
         let _lookupFields = _.find(
@@ -23,14 +21,14 @@ export default class FilterProperties {
         );
 
         if (_lookupFields) {
-            return <LookupFieldsInterface[]>_lookupFields.fields
+            return <LookupFieldInterface[]>_lookupFields.fields
         }
 
         return null;
 
     }
 
-    // 获取 filterProperties
+    // get filterProperties in metedata
     get filterProperties() {
 
         let metadata = this._entityMetadata;
@@ -42,19 +40,12 @@ export default class FilterProperties {
 
             _filterProperties.push(
                 new FilterProperty(
+                    field,
                     filteringProperty,
                     _.find(metadata.properties, ['name', filteringProperty.targetPropertyName])
                 )
             )
         }
-
         return _filterProperties;
     }
-
-}
-
-
-interface LookupFieldsInterface {
-    name: string;
-    isMandatory: boolean;
 }

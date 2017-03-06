@@ -1,5 +1,6 @@
 export interface FilterViewDataInterface {
-    Property: FilterViewPropertyInterface
+    Property: FilterViewPropertyInterface;
+    isMandatory: boolean;
     Type: string;
     Select: FilterViewSelectInterface[];
     FilterValue: FilterViewValueInterface;

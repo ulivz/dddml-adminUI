@@ -14,7 +14,6 @@ export default Vue.extend({
     },
     watch: {
         filterPropertiesSelectValue(curVal, oldVal) {
-            console.log('2')
             if (this.filterPropertiesSelectValue) {
                 this.isErrorModalShow = false
             }
@@ -23,8 +22,6 @@ export default Vue.extend({
     methods: {
         // 可供选择的过滤条件的选择值改变
         filterPropertiesSelectChange(value) {
-            console.log('3');
-            console.log(this);
             this.filterPropertiesSelectValue = value;
         },
         filterModalCancel() {

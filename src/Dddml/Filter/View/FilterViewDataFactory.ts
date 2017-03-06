@@ -7,7 +7,7 @@ import {FilterViewDataInterface} from 'src/Dddml/Filter/View/FilterViewDataInter
 
 export default class FilterViewDataFactory {
 
-    // 解析视图数据
+    // parse the view data
     static parse(viewData: FilterViewDataInterface[]) {
 
         let filter = new Filter('conjunction');
@@ -46,18 +46,16 @@ export default class FilterViewDataFactory {
                                    criterion.FilterValue.Value);
                     break;
             }
-
         }
 
         return filter;
-
     }
 
-    // 生成默认的视图数据
+
+    // generate the default data for view
     static createDefault(filterProperties: FilterProperty[]) {
 
         let viewData: FilterViewDataInterface[] = [];
-
 
         for (let filterProperty of filterProperties) {
             viewData.push(FilterViewDataFactory.createCriterion(
@@ -69,9 +67,11 @@ export default class FilterViewDataFactory {
     }
 
 
+    // generate a criterion for view via filterProperty
     static createCriterion(filterProperty: FilterProperty) {
         let Factory = FilterViewDataElementFactory;
         return <FilterViewDataInterface>{
+            isMandatory: filterProperty.isMandatory,
             Property: Factory.Property(filterProperty),
             Type: Factory.Type(filterProperty),
             Select: Factory.Select(filterProperty),
@@ -79,8 +79,7 @@ export default class FilterViewDataFactory {
         }
     }
 
-
-    // 生成添加条件的选择器
+    // generate the selector for adding a criterion
     static createPropertiesSelect(filterProperties: FilterProperty[]) {
         return _.map(filterProperties, function (filterProperty) {
             return {
@@ -93,9 +92,10 @@ export default class FilterViewDataFactory {
 
 }
 
-// 一个数据样例
+// a filter view example
 const FilterViewExample = [
     {
+        isMandatory: true,
         Property: {
             name: '',
             label: ''

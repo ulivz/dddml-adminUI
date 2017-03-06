@@ -22,7 +22,7 @@ export default Vue.extend({
             showError: false,
             errorMessage: "",
             isFilterModalShow: false,
-            filterModel: null,
+            filterProperties: null,
             filterPropertiesSelect: null,
             filterCriteria: [],
         }
@@ -50,50 +50,52 @@ export default Vue.extend({
     route: {
         data() {
 
-            // 获得实体的name
+            // get the entity's name
             let entityCollectionName = this.$route.params.name;
 
             this.$http.get(entityCollectionName).then((response) => {
 
+                // get the entity collection
                 let entityCollection = <EntityCollection>EntityCollection.create(
                     entityCollectionName,
                     null,
                     response.data
                 );
 
+                // get the data table for publishing entityCollection
                 this.table = TableModelFactory.create(entityCollection);
 
+                // meau button collection
                 let btnMeau = [];
 
-                // 新建按钮
+                // "create" button
                 let createBtn = btnMeauConfig.CREATE_BTN;
                 createBtn.link.name = 'createEntity';
                 createBtn.link.params.name = entityCollection.name;
                 btnMeau.push(createBtn);
 
+                // binging "this"
                 let self = this;
 
-                this.filterModel = new FilterProperties(entityCollection.metadata);
-                console.log(this.filterModel);
+                // get filterProperties via metadata
+                this.filterProperties = new FilterProperties(entityCollection.metadata);
 
-                if (this.filterModel.lookupFilesInConfig) {
+                if (this.filterProperties.lookupFilesInConfig) {
 
                     this.filterCriteria = FilterViewDataFactory.createDefault(
-                        this.filterModel.filterProperties
+                        this.filterProperties.filterProperties
                     )
 
                     this.filterPropertiesSelect = FilterViewDataFactory.createPropertiesSelect(
-                        this.filterModel.filterProperties
+                        this.filterProperties.filterProperties
                     )
-                    console.log(this.filterPropertiesSelect)
 
-                    // 过滤按钮
+                    // "filter" button
                     let filterBtn = btnMeauConfig.FILTER_BTN;
                     filterBtn.method = self.openFilterModal;
                     btnMeau.push(filterBtn);
 
                 }
-
 
                 this.btnMeau = btnMeau;
 

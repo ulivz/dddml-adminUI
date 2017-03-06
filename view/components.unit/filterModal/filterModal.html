@@ -21,24 +21,8 @@
             </span>
         </div>
 
-        <div v-for="(index, criterion) in filterCriteria" style="\
+        <div v-for="(index, criterion) in filterCriteria" style="margin: 7px 0">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         rgin: 7px 0">
             <i-input :value.sync="criterion.Property.label"
                      style="margin-right: 5px; width: 100px;display: inline-block;pointer-events: none;"></i-input>
 
@@ -79,12 +63,13 @@
                              style="width: 200px;display: inline-block"></i-input>
             </span>
 
-            <v-icon @click="filterCriteria.splice(index, 1)" style="color: #f00; font-size: 18px; margin-left: 5px"
+            <v-icon v-if="filterCriteria.isMandatory"
+                    @click="filterCriteria.splice(index, 1)" style="color: #f00; font-size: 18px; margin-left: 5px"
                     type="minus-circle"></v-icon>
 
         </div>
 
-        <v-button type="success" @click="filterModalOk">TEST</v-button>
+        <v-button type="success" @click="filterModalOk">add Test</v-button>
 
     </div>
 </Modal>
