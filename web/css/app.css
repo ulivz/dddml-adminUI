@@ -150,12 +150,10 @@ table {
 
 /* AggregateRoot.page
    ========================================================================== */
-.filter-property {
-    width: 100px;
+.prevent-pointer{
     pointer-events: none;
-    display: inline-block
 }
 
-.filter-input-default {
-
+.visibility-hidden{
+   visibility: hidden;
 }

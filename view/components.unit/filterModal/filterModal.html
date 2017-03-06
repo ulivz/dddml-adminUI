@@ -3,6 +3,12 @@
        @on-ok="filterModalOk"
        @on-cancel="filterModalCancel"
        width="800">
+
+    <p slot="header" style="color:#f60;text-align:center">
+        <Icon type="information-circled"></Icon>
+        <span>请输入过滤条件</span>
+    </p>
+
     <div style="padding: 0 120px; max-height: 270px; overflow-y: scroll">
 
         <div style="min-height: 35px" v-if="filterPropertiesSelect">
@@ -15,9 +21,9 @@
                       @click="createFilterCriterion">新增
             </v-button>
             <span>
-               <v-alert v-if="isErrorModalShow"
+               <v-alert v-if="isAddConditionMsgShow"
                         style="display: inline-block; width: 250px; height: 32px; margin-bottom: 0" type="error"
-                        :show-icon="true" message="请选选择条件再新建"></v-alert>
+                        :show-icon="true" message="请先选择条件后再新建"></v-alert>
             </span>
         </div>
 
@@ -66,10 +72,19 @@
             <v-icon v-if="filterCriteria.isMandatory"
                     @click="filterCriteria.splice(index, 1)" style="color: #f00; font-size: 18px; margin-left: 5px"
                     type="minus-circle"></v-icon>
-
         </div>
 
-        <v-button type="success" @click="filterModalOk">add Test</v-button>
+        <!--<v-button type="success">add Test</v-button>-->
+
+        <v-alert :class="{'visibility-hidden': isPreventOkMsgHide }"
+                 style="display: inline-block; width: 400px; height: 32px; margin-bottom: 0" type="error"
+                 :show-icon="true" message="Filter criteria must be set value before filtering"></v-alert>
 
     </div>
+
+    <div slot="footer">
+            <i-button type="text" size="large" @click="cancel">Cancel</i-button>
+            <i-button type="primary" size="large" :loading="buttonLoading" @click="ok">Ok</i-button>
+    </div>
+
 </Modal>

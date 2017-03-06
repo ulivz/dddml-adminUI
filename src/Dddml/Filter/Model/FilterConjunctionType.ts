@@ -5,7 +5,7 @@ const CONJUNCTION_FILTER_TYPE = [
     },
     {
         name: 'isNull',
-        label: '不能为空'
+        label: '为空'
     },
     {
         name: 'between',

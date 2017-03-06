@@ -9,11 +9,12 @@ export const AGGREGATES_METADATA = [
             "label": "Id",
             "type": "string"
         },
-        "properties": [{
-            "name": "version",
-            "label": "Version",
-            "type": "long"
-        },
+        "properties": [
+            {
+                "name": "version",
+                "label": "Version",
+                "type": "long"
+            },
             {
                 "name": "createdBy",
                 "label": "Created By",

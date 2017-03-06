@@ -22,28 +22,28 @@ export default class FilterViewDataFactory {
 
                 case 'eq':
                     filter.addValue(criterion.Property.name,
-                                    criterion.FilterValue.Value);
+                        criterion.FilterValue.Value);
                     break;
 
                 case 'between':
                     filter.addBetween(criterion.Property.name,
-                                      criterion.FilterValue.Lo,
-                                      criterion.FilterValue.Hi);
+                        criterion.FilterValue.Lo,
+                        criterion.FilterValue.Hi);
                     break;
 
                 case 'ge':
                     filter.addGe(criterion.Property.name,
-                                 criterion.FilterValue.Value);
+                        criterion.FilterValue.Value);
                     break;
 
                 case 'le':
                     filter.addLe(criterion.Property.name,
-                                 criterion.FilterValue.Value);
+                        criterion.FilterValue.Value);
                     break;
 
                 case 'like':
                     filter.addLike(criterion.Property.name,
-                                   criterion.FilterValue.Value);
+                        criterion.FilterValue.Value);
                     break;
             }
         }
@@ -52,8 +52,60 @@ export default class FilterViewDataFactory {
     }
 
 
+    // check the view data
+    // return false ...
+    // when the condition with mandatory criterion hasn't input value
+    static check(viewData: FilterViewDataInterface[]) {
+
+        let status: boolean = true;
+
+        for (let criterion of viewData) {
+
+            switch (criterion.Type) {
+
+                case 'isNull':
+                    ;
+                    break;
+
+                case 'eq':
+                    if (!criterion.FilterValue.Value) {
+                        status = false;
+                    }
+                    break;
+
+                case 'between':
+                    if (!criterion.FilterValue.Lo || !criterion.FilterValue.Hi) {
+                        status = false;
+                    };
+                    break;
+
+                case 'ge':
+                    if (!criterion.FilterValue.Value) {
+                        status = false;
+                    };
+                    break;
+
+                case 'le':
+                    if (!criterion.FilterValue.Value) {
+                        status = false;
+                    };
+                    break;
+
+                case 'like':
+                    if (!criterion.FilterValue.Value) {
+                        status = false;
+                    };
+                    break;
+            }
+        }
+
+        return status;
+    }
+
+
+
     // generate the default data for view
-    static createDefault(filterProperties: FilterProperty[]) {
+    static createDefault(filterProperties: FilterProperty[]): FilterViewDataInterface[] {
 
         let viewData: FilterViewDataInterface[] = [];
 
@@ -69,7 +121,9 @@ export default class FilterViewDataFactory {
 
     // generate a criterion for view via filterProperty
     static createCriterion(filterProperty: FilterProperty) {
+
         let Factory = FilterViewDataElementFactory;
+
         return <FilterViewDataInterface>{
             isMandatory: filterProperty.isMandatory,
             Property: Factory.Property(filterProperty),
@@ -81,6 +135,7 @@ export default class FilterViewDataFactory {
 
     // generate the selector for adding a criterion
     static createPropertiesSelect(filterProperties: FilterProperty[]) {
+
         return _.map(filterProperties, function (filterProperty) {
             return {
                 value: filterProperty.name,
@@ -89,6 +144,7 @@ export default class FilterViewDataFactory {
         })
     }
 
+    // condition used to prevent filter modal submit
 
 }
 

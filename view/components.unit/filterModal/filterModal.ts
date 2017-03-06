@@ -1,36 +1,52 @@
 import * as Vue from 'vue';
 import FilterProperty from 'src/Dddml/Filter/Model/FilterProperty.ts';
 import FilterViewDataFactory from 'src/Dddml/Filter/View/FilterViewDataFactory.ts';
+import {FilterViewDataInterface} from 'src/Dddml/Filter/View/FilterViewDataInterface.ts';
+import camelCase = require("lodash/camelCase");
 
 export default Vue.extend({
     template: require('./filterModal.html'),
     data() {
       return {
-          isErrorModalShow: false
+          isAddConditionMsgShow: false,
+          isPreventOkMsgHide: true
       }
-    },
-    computed: {
-
     },
     watch: {
         filterPropertiesSelectValue(curVal, oldVal) {
             if (this.filterPropertiesSelectValue) {
-                this.isErrorModalShow = false
+                this.isAddConditionMsgShow = false
             }
         }
     },
     methods: {
-        // 可供选择的过滤条件的选择值改变
+        // when the selector has changed
         filterPropertiesSelectChange(value) {
             this.filterPropertiesSelectValue = value;
         },
-        filterModalCancel() {
+        // click the cancel button || close the modal
+        cancel() {
             this.isFilterModalShow = false;
         },
-        // 新建一个过滤条件
+        // click the ok button
+        ok() {
+            if(FilterViewDataFactory.check(this.filterCriteria)){
+                this.isPreventOkMsgHide = true;
+                // trigger a event with filter JSON data
+                this.$emit('filter-choose-ok', JSON.stringify(FilterViewDataFactory.parse(
+                    this.filterCriteria
+                ), null, 2))
+                // close the filter modal
+                this.isFilterModalShow = false;
+            } else {
+                // show the prevent modal
+                this.isPreventOkMsgHide = false;
+            }
+        },
+        // create a new criterion
         createFilterCriterion() {
             if (this.filterPropertiesSelectValue) {
-                this.isErrorModalShow = false;
+                this.isAddConditionMsgShow = false;
                 this.filterCriteria.push(
                     FilterViewDataFactory.createCriterion(
                            <FilterProperty>_.find(this.filterProperties,
@@ -38,46 +54,37 @@ export default Vue.extend({
                     )
                 )
             } else {
-                console.log('1');
-                this.isErrorModalShow = true;
+                this.isAddConditionMsgShow = true;
             }
         },
-        // 单个条件的选择值改变
+        // change the criterion's Type when user has
         criterionChange(criterion, valueArray) {
             criterion.Type = valueArray[0];
-            console.log(criterion);
-        },
-        // 点击了确定
-        filterModalOk() {
-            this.$emit('filter-choose-ok', JSON.stringify(FilterViewDataFactory.parse(
-                this.filterCriteria
-            ), null, 2))
+            // Once there is a condition of the property being switched
+            // show of 'prevent-model-ok' modal will hidden, and show...
+            // after next time of user's ok-button-click
+            this.isPreventOkMsgHide = true;
         }
     },
     props: {
-        // 元数据
+        // metadata
         filterProperties: {
             type: Array
         },
-        // 显示/隐藏的条件
+        // condition of 'hide/show'
         isFilterModalShow: {
             type: Boolean,
             twoWay: true
         },
-        // 新增条件的下拉框
+        // data of selector for chosing property to add criterion
         filterPropertiesSelect: {
             type: Array,
             twoWay: true
         },
-        // 过滤条件的核心显示数据
+        // view data
         filterCriteria: {
             type: Array,
             twoWay: true
-        },
-    },
-    created() {
-        // console.info(this.filterProperties);
-        // console.log(this.filterPropertiesSelect);
-        // console.log(this.filterCriteria);
+        }
     }
 });
