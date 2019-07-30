@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "web/js/plugins/bootstrap-switch/package.json",
+        "web/js/plugins/jquery-validation/package.json"
+      ]
+    }
+  }
+}
