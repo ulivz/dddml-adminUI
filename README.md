@@ -1,5 +1,7 @@
 # dddml-adminUI
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ulivz/dddml-adminUI.svg)](https://greenkeeper.io/)
+
 adminUI for [dddml-dotnet-tools][1] @wubuku
 
 # Quick Start
