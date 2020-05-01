@@ -13,7 +13,9 @@
     "debug": "devtool _TEST/test.js ",
     "debug-w": "devtool _TEST/test.js --watch",
     "build-w": "webpack --watch",
-    "build-p": "webpack -p"
+    "build-p": "webpack -p",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "",
   "license": "",
@@ -42,6 +44,8 @@
     "lodash": "^4.15.0",
     "style-loader": "^0.13.1",
     "vue": "^1.0.26",
-    "vue-beauty": "^0.0.10"
-  }
+    "vue-beauty": "^0.0.10",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
